@@ -3,93 +3,119 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rodrigo Huber — previsão, otimização, ciência de dados</title>
-<meta name="description" content="Rodrigo Huber Mendes — doutorando em previsão e séries temporais na PUC-Rio. Transfer learning para previsão solar, previsão de criptoativos, otimização de portfólio.">
+<title>Rodrigo Huber — ciência de dados, otimização sob incerteza e previsão</title>
+<meta name="description" content="Rodrigo Huber Mendes — cientista de dados e doutorando na PUC-Rio. Otimização distribucionalmente robusta (DRO), simulação, machine learning, séries temporais e transfer learning aplicados a energia solar e mercados.">
 <meta name="color-scheme" content="dark light">
+<meta property="og:title" content="Rodrigo Huber — ciência de dados, otimização sob incerteza e previsão">
+<meta property="og:description" content="DRO, simulação, machine learning e previsão. Da pesquisa de doutorado à operação real.">
+<meta property="og:type" content="website">
 <style>
   :root{
-    --deep:#050b14; --ground:#08111e; --card:#0d1a2b; --line:#17293f;
-    --foam:#eef4fb; --mist:#8aa2bd; --swell:#3d9be9; --volt:#5fd3c4; --sun:#ffb454;
-    --maxw:940px;
+    --deep:#040a12; --ground:#07111d; --card:#0c1a2b; --card2:#0f2136; --line:#183049;
+    --foam:#eff5fc; --mist:#8ba4c0; --dim:#63799a;
+    --swell:#3d9be9; --volt:#5fd3c4; --sun:#ffb454;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--deep);color:var(--foam);
     font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
     line-height:1.6;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1.1rem,4vw,2rem)}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2rem)}
   a{color:var(--swell);text-decoration:none}
   a:hover{color:var(--volt)}
+  section{padding:clamp(2.6rem,7vw,4.2rem) 0;border-top:1px solid var(--line)}
+  h2{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--volt);
+    margin:0 0 .5rem;font-weight:750}
+  .h2sub{color:var(--dim);font-size:.92rem;margin:0 0 1.7rem;max-width:62ch}
 
   /* ---------- hero ---------- */
-  header.hero{position:relative;overflow:hidden;padding:clamp(4rem,13vw,7.5rem) 0 clamp(2.5rem,7vw,4rem)}
-  header.hero::before{content:"";position:absolute;inset:0;
-    background:radial-gradient(120% 90% at 18% -10%,rgba(61,155,233,.20),transparent 62%),
-               radial-gradient(90% 70% at 92% 0%,rgba(95,211,196,.13),transparent 60%);
-    pointer-events:none}
-  .eyebrow{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--volt);
-    margin:0 0 .9rem;font-weight:700}
-  h1{font-size:clamp(2.3rem,7.5vw,4.15rem);line-height:1.02;margin:0 0 1.15rem;
-    font-weight:800;letter-spacing:-.02em}
+  header.hero{position:relative;overflow:hidden;padding:clamp(4rem,12vw,7rem) 0 clamp(2.2rem,6vw,3.4rem)}
+  header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(115% 88% at 16% -12%,rgba(61,155,233,.22),transparent 62%),
+               radial-gradient(85% 65% at 94% 2%,rgba(95,211,196,.14),transparent 58%)}
+  .eyebrow{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--volt);
+    margin:0 0 .9rem;font-weight:750}
+  h1{font-size:clamp(2.4rem,7.6vw,4.4rem);line-height:1.0;margin:0 0 1.2rem;
+    font-weight:850;letter-spacing:-.025em}
   h1 .dot{color:var(--swell);cursor:default;user-select:none;
     -webkit-tap-highlight-color:transparent;transition:color .25s,text-shadow .25s}
-  h1 .dot.warm{color:var(--sun);text-shadow:0 0 18px rgba(255,180,84,.55)}
-  .lede{font-size:clamp(1.02rem,2.5vw,1.2rem);color:var(--mist);max-width:56ch;margin:0 0 1.6rem}
-  .lede b{color:var(--foam);font-weight:600}
-  .chips{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 .3rem;padding:0;list-style:none}
-  .chips li{font-size:.78rem;border:1px solid var(--line);background:rgba(61,155,233,.07);
-    color:var(--mist);padding:.24rem .7rem;border-radius:999px}
+  h1 .dot.warm{color:var(--sun);text-shadow:0 0 20px rgba(255,180,84,.6)}
+  .lede{font-size:clamp(1.05rem,2.5vw,1.25rem);color:var(--mist);max-width:60ch;margin:0 0 1.5rem}
+  .lede b{color:var(--foam);font-weight:650}
+  .chips{display:flex;flex-wrap:wrap;gap:.42rem;margin:0;padding:0;list-style:none}
+  .chips li{font-size:.77rem;border:1px solid var(--line);background:rgba(61,155,233,.08);
+    color:var(--mist);padding:.25rem .72rem;border-radius:999px}
 
-  /* ---------- sections ---------- */
-  section{padding:clamp(2.4rem,7vw,3.8rem) 0;border-top:1px solid var(--line)}
-  h2{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--volt);
-    margin:0 0 1.5rem;font-weight:700}
+  /* ---------- proof strip ---------- */
+  .proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:.7rem;
+    margin-top:clamp(1.8rem,5vw,2.6rem)}
+  .stat{background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);
+    border-radius:12px;padding:1rem 1.05rem}
+  .stat .n{font-size:clamp(1.5rem,3.6vw,1.95rem);font-weight:850;letter-spacing:-.02em;
+    color:var(--foam);line-height:1.05;display:block}
+  .stat .n em{font-style:normal;color:var(--volt)}
+  .stat .l{font-size:.79rem;color:var(--dim);margin-top:.3rem;display:block;line-height:1.35}
 
-  /* ---------- work ---------- */
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:.9rem}
+  /* ---------- capabilities ---------- */
+  .caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:.85rem}
+  .cap{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.15rem 1.2rem;
+    transition:border-color .25s,transform .25s}
+  .cap:hover{border-color:var(--swell);transform:translateY(-2px)}
+  .cap h3{margin:0 0 .4rem;font-size:1rem;font-weight:700;color:var(--foam);
+    display:flex;align-items:baseline;gap:.5rem}
+  .cap h3 .k{color:var(--volt);font-size:.8rem;font-weight:800}
+  .cap p{margin:0;font-size:.88rem;color:var(--mist)}
+  .cap .tools{margin:.6rem 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:.3rem}
+  .cap .tools li{font-size:.7rem;color:var(--dim);border:1px solid var(--line);
+    border-radius:5px;padding:.1rem .42rem}
+
+  /* ---------- projects ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(262px,1fr));gap:.9rem}
   .card{background:var(--card);border:1px solid var(--line);border-radius:12px;
     padding:1.15rem 1.2rem;display:flex;flex-direction:column;gap:.5rem;
     transition:border-color .25s,transform .25s}
   .card:hover{border-color:var(--swell);transform:translateY(-2px)}
-  .tag{font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--mist);margin:0}
+  .tag{font-size:.67rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;
+    color:var(--dim);margin:0}
   .tag.live{color:var(--volt)}
-  .card h3{font-size:1.04rem;margin:0;font-weight:650;line-height:1.34}
-  .card p{margin:0;font-size:.9rem;color:var(--mist)}
-  .card .go{margin-top:auto;font-size:.83rem;overflow-wrap:anywhere}
+  .card h3{font-size:1.03rem;margin:0;font-weight:680;line-height:1.34}
+  .card p{margin:0;font-size:.885rem;color:var(--mist)}
+  .card .go{margin-top:auto;font-size:.82rem;overflow-wrap:anywhere}
+
+  /* ---------- credentials ---------- */
+  .cred{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.7rem}
+  .cred div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.9rem 1rem}
+  .cred b{display:block;font-size:.94rem;font-weight:650;margin-bottom:.15rem}
+  .cred span{font-size:.8rem;color:var(--dim)}
 
   /* ---------- links ---------- */
-  .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:.65rem}
+  .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:.6rem}
   .link{display:flex;align-items:center;gap:.75rem;background:var(--card);
     border:1px solid var(--line);border-radius:10px;padding:.85rem 1rem;
     color:var(--foam);transition:border-color .25s,background .25s}
-  .link:hover{border-color:var(--volt);background:#102338;color:var(--foam)}
-  .link .ic{width:1.5rem;text-align:center;font-size:1.05rem;flex:0 0 auto}
+  .link:hover{border-color:var(--volt);background:var(--card2);color:var(--foam)}
+  .link .ic{width:1.4rem;text-align:center;font-size:1.02rem;flex:0 0 auto;color:var(--swell)}
   .link .tx{display:flex;flex-direction:column;line-height:1.3;min-width:0}
-  .link .tx b{font-weight:600;font-size:.94rem}
-  .link .tx span{font-size:.76rem;color:var(--mist);overflow-wrap:anywhere}
+  .link .tx b{font-weight:640;font-size:.93rem}
+  .link .tx span{font-size:.75rem;color:var(--dim);overflow-wrap:anywhere}
 
-  /* ---------- footer ---------- */
-  footer{border-top:1px solid var(--line);padding:2.2rem 0 3rem;color:var(--mist);font-size:.84rem}
+  footer{border-top:1px solid var(--line);padding:2.2rem 0 3.2rem;color:var(--dim);font-size:.83rem}
   footer p{margin:.3rem 0}
 
   /* ---------- easter egg ---------- */
   #egg{position:fixed;inset:0;display:none;place-items:center;z-index:50;
-    background:rgba(3,7,13,.82);backdrop-filter:blur(6px);padding:1.2rem}
+    background:rgba(3,7,13,.85);backdrop-filter:blur(6px);padding:1.2rem}
   #egg.on{display:grid}
   .eggbox{background:var(--card);border:1px solid var(--sun);border-radius:14px;
-    padding:1.7rem 1.6rem;max-width:23rem;text-align:center;
-    box-shadow:0 22px 60px rgba(0,0,0,.6)}
+    padding:1.7rem 1.6rem;max-width:23rem;text-align:center;box-shadow:0 22px 60px rgba(0,0,0,.65)}
   .eggbox p{margin:0 0 1.1rem;color:var(--foam);font-size:1rem;line-height:1.5}
-  .eggbox .go{display:inline-block;background:var(--sun);color:#20160a;font-weight:750;
+  .eggbox .go{display:inline-block;background:var(--sun);color:#20160a;font-weight:780;
     padding:.6rem 1.2rem;border-radius:999px;font-size:.92rem}
   .eggbox .go:hover{color:#20160a;filter:brightness(1.08)}
-  .eggbox .close{display:block;margin-top:.9rem;background:none;border:0;color:var(--mist);
-    font-size:.8rem;cursor:pointer;font-family:inherit}
+  .eggbox .close{display:block;margin-top:.9rem;background:none;border:0;color:var(--dim);
+    font-size:.79rem;cursor:pointer;font-family:inherit}
 
-  @media (prefers-reduced-motion:reduce){
-    *{animation:none!important;transition:none!important}
-    html{scroll-behavior:auto}
-  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -97,53 +123,142 @@
 <header class="hero">
   <div class="wrap">
     <p class="eyebrow">PUC-Rio &middot; Rio de Janeiro</p>
-    <h1>Rodrigo Huber<span class="dot" id="dot" title="">.</span></h1>
-    <p class="lede">Doutorando em <b>previsão e séries temporais</b>. Trabalho na ponte entre
-      o método acadêmico e a operação real: <b>transfer learning</b> para previsão solar,
-      previsão de criptoativos, otimização de portfólio e simulação.</p>
+    <h1>Rodrigo Huber<span class="dot" id="dot">.</span></h1>
+    <p class="lede">Cientista de dados. Trabalho onde <b>previsão</b>, <b>otimização sob incerteza</b>
+      e <b>simulação</b> se encontram — e onde o método acadêmico precisa sobreviver ao contato com
+      a operação real.</p>
     <ul class="chips">
-      <li>Transfer learning</li><li>Séries temporais</li><li>Machine learning</li>
-      <li>Otimização de portfólio</li><li>Energia renovável</li><li>Revisão sistemática PRISMA</li>
+      <li>Ciência de dados</li><li>Machine learning</li><li>Otimização robusta (DRO)</li>
+      <li>Simulação</li><li>Séries temporais</li><li>Transfer learning</li>
+      <li>Quantificação de incerteza</li><li>Energia renovável</li><li>Revisão sistemática PRISMA</li>
     </ul>
+
+    <div class="proof">
+      <div class="stat"><span class="n">106</span><span class="l">estudos numa revisão sistemática PRISMA, extraídos sob esquema fixo</span></div>
+      <div class="stat"><span class="n">9,4<em>M</em></span><span class="l">barras de 1 minuto de mercado processadas, cada arquivo verificado por SHA-256</span></div>
+      <div class="stat"><span class="n">7 &rarr; <em>1</em></span><span class="l">estratégias testadas contra custos; seis reprovadas, uma sobreviveu e foi replicada</span></div>
+      <div class="stat"><span class="n">2</span><span class="l">títulos concluídos na PUC-Rio, e um doutorado em andamento</span></div>
+    </div>
   </div>
 </header>
 
 <section>
   <div class="wrap">
+    <h2>O que eu faço</h2>
+    <p class="h2sub">Cinco competências que se usam juntas: prever, decidir sob incerteza, simular a
+      decisão antes de tomá-la, e provar que o resultado não é sorte.</p>
+    <div class="caps">
+
+      <div class="cap">
+        <h3><span class="k">01</span> Previsão e séries temporais</h3>
+        <p>Modelos de previsão avaliados como se avalia ciência: divisão cronológica, walk-forward,
+          custos cobrados e comparação contra linhas de base ingênuas — que vencem com mais
+          frequência do que a literatura admite.</p>
+        <ul class="tools"><li>LightGBM</li><li>GARCH / HAR</li><li>redes neurais</li><li>modelos de fundação</li></ul>
+      </div>
+
+      <div class="cap">
+        <h3><span class="k">02</span> Otimização sob incerteza &mdash; DRO</h3>
+        <p><b>Distributionally robust optimization</b>: decidir bem quando a distribuição que gerou
+          os dados não é a que vai valer amanhã. É o núcleo da minha pesquisa de doutorado, aplicado
+          a energia solar — e a diferença entre um plano ótimo no papel e um plano que aguenta o
+          cenário que ninguém previu.</p>
+        <ul class="tools"><li>DRO</li><li>otimização estocástica</li><li>otimização de portfólio</li></ul>
+      </div>
+
+      <div class="cap">
+        <h3><span class="k">03</span> Simulação</h3>
+        <p>Motores de simulação para testar decisões antes que elas custem dinheiro: cenários
+          replicáveis, custos e atrito embutidos, e a pergunta certa no fim — não "quanto rendeu",
+          mas "sob quais condições isso falha".</p>
+        <ul class="tools"><li>Monte Carlo</li><li>backtesting</li><li>cenários de estresse</li></ul>
+      </div>
+
+      <div class="cap">
+        <h3><span class="k">04</span> Machine learning e transfer learning</h3>
+        <p>Como reaproveitar conhecimento de um domínio onde há dados para outro onde não há —
+          previsão em usinas solares sem histórico local, e generalização para ativos novos.
+          Zero-shot e few-shot, medidos pelo dado que realmente falta.</p>
+        <ul class="tools"><li>transfer learning</li><li>zero/few-shot</li><li>quantificação de incerteza</li></ul>
+      </div>
+
+      <div class="cap">
+        <h3><span class="k">05</span> Método e rigor científico</h3>
+        <p>Revisão sistemática PRISMA, auditoria de resultados e escrita acadêmica sob normas ABNT e
+          ISO. Sei construir a evidência — e sei desmontar a que não se sustenta, inclusive a minha.</p>
+        <ul class="tools"><li>PRISMA</li><li>ABNT / ISO</li><li>metrologia</li><li>reprodutibilidade</li></ul>
+      </div>
+
+      <div class="cap">
+        <h3><span class="k">06</span> Ensino</h3>
+        <p>Aulas particulares de engenharia, matemática, física e estatística; e auditoria e
+          refino de trabalhos acadêmicos.</p>
+        <ul class="tools"><li>estatística</li><li>cálculo</li><li>física</li><li>escrita científica</li></ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
     <h2>Projetos</h2>
+    <p class="h2sub">Cada um com o código ou o protocolo aberto — o número que eu mostro é sempre
+      rastreável até o script que o gerou.</p>
     <div class="grid">
 
       <article class="card">
         <p class="tag live">● No ar &middot; código aberto</p>
         <h3>ForeSight 3.0</h3>
-        <p>Previsão de criptoativos com validação científica. Sete estratégias testadas,
-          seis mortas, uma sobrevive — e ela foi replicada em dois ativos independentes.</p>
+        <p>Previsão de criptoativos com validação científica. Sete estratégias testadas, seis
+          mortas, uma sobrevive — replicada em dois ativos independentes, com os limites declarados.</p>
         <p class="go"><a href="https://github.com/rodrigohuber/ForeSight-3.0" rel="noopener">github.com/rodrigohuber/ForeSight-3.0</a></p>
       </article>
 
       <article class="card">
         <p class="tag">Artigo publicado</p>
-        <h3>Previsão solar zero-shot — SBPO 2025</h3>
-        <p>Previsão de geração fotovoltaica em usinas sem histórico local, com o código
-          completo publicado junto.</p>
+        <h3>Previsão solar zero-shot &mdash; SBPO 2025</h3>
+        <p>Previsão de geração fotovoltaica em usinas sem nenhum histórico local, com o código
+          completo publicado junto do artigo.</p>
         <p class="go"><a href="https://github.com/rodrigohuber/zero-shot-solar-forecasting_SBPO25" rel="noopener">github.com/rodrigohuber/zero-shot-solar-forecasting_SBPO25</a></p>
       </article>
 
       <article class="card">
         <p class="tag">Revisão sistemática</p>
         <h3>Transfer learning para previsão solar</h3>
-        <p>Revisão PRISMA de 106 estudos, organizada em torno de uma pergunta que nenhuma
-          revisão anterior fez: <b>quanto dado local</b> esses métodos realmente precisam.</p>
+        <p>Revisão PRISMA de 106 estudos, organizada em torno de uma pergunta que nenhuma revisão
+          anterior fez: <b>quanto dado local</b> esses métodos realmente precisam.</p>
         <p class="go">Em andamento</p>
       </article>
 
       <article class="card">
+        <p class="tag live">● No ar &middot; material aberto</p>
+        <h3>Aula de graduação &mdash; introdução a transfer learning</h3>
+        <p>Curso introdutório de transfer learning para graduandos em ciência de dados: do zero,
+          com o material completo aberto.</p>
+        <p class="go"><a href="https://github.com/rodrigohuber/aula-grad" rel="noopener">github.com/rodrigohuber/aula-grad</a></p>
+      </article>
+
+      <article class="card">
         <p class="tag">Doutorado</p>
-        <h3>Transfer learning e quantificação de incerteza para previsão fotovoltaica</h3>
-        <p>Linha de pesquisa em andamento na PUC-Rio.</p>
+        <h3>Otimização robusta e incerteza na previsão fotovoltaica</h3>
+        <p>Machine learning e otimização distribucionalmente robusta aplicados à energia solar.
+          Linha de pesquisa em andamento na PUC-Rio.</p>
         <p class="go">Em andamento</p>
       </article>
 
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Formação</h2>
+    <div class="cred">
+      <div><b>Doutorado em andamento</b><span>PUC-Rio &middot; machine learning e otimização para energia solar</span></div>
+      <div><b>Mestre em Metrologia</b><span>PUC-Rio &middot; concluído em 2020</span></div>
+      <div><b>Engenheiro Mecânico</b><span>graduação</span></div>
+      <div><b>Bolsista CAPES &middot; FAPERJ Nota 10</b><span>fomento à pesquisa</span></div>
     </div>
   </div>
 </section>
@@ -185,9 +300,8 @@
 (function(){
   /* ==========================================================
      EASTER EGG — 5 clicks on the full stop after the name.
-     Set MEME_URL to the meme page once it is live. While it is
-     empty the egg stays disabled, so the page never offers a
-     dead link.
+     Set MEME_URL once the meme page is live. While it is empty
+     the egg stays inert, so the page never offers a dead link.
      ========================================================== */
   var MEME_URL = "";
 
@@ -196,7 +310,6 @@
       link = document.getElementById('eggLink'),
       closeBtn = document.getElementById('eggClose'),
       hits = 0, timer = null;
-
   if (!dot) return;
 
   function reset(){ hits = 0; dot.classList.remove('warm'); }
@@ -204,14 +317,10 @@
   dot.addEventListener('click', function(){
     if (!MEME_URL) return;
     hits++;
-    if (hits >= 3) dot.classList.add('warm');   /* it starts to glow — findable, not obvious */
+    if (hits >= 3) dot.classList.add('warm');
     clearTimeout(timer);
-    timer = setTimeout(reset, 1600);            /* the run must be deliberate */
-    if (hits >= 5){
-      clearTimeout(timer); reset();
-      link.href = MEME_URL;
-      egg.classList.add('on');
-    }
+    timer = setTimeout(reset, 1600);
+    if (hits >= 5){ clearTimeout(timer); reset(); link.href = MEME_URL; egg.classList.add('on'); }
   });
 
   function hide(){ egg.classList.remove('on'); }
