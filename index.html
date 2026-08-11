@@ -342,7 +342,7 @@
 <div id="egg" role="dialog" aria-modal="true" aria-label="Você achou">
   <div class="eggbox">
     <p>Você clicou cinco vezes num ponto final.<br>Isso merece uma recompensa.</p>
-    <a class="go" id="eggLink" href="#" rel="noopener">Abrir</a>
+    <a class="go" id="eggLink" href="#" target="_blank" rel="noopener noreferrer">Abrir</a>
     <button class="close" id="eggClose" type="button">fechar</button>
   </div>
 </div>
@@ -351,10 +351,11 @@
 (function(){
   /* ==========================================================
      EASTER EGG — 5 clicks on the full stop after the name.
-     Set MEME_URL once the meme page is live. While it is empty
-     the egg stays inert, so the page never offers a dead link.
+     Points at the meme page, hosted off this site so the two
+     identities stay separate. Emptying MEME_URL disarms the egg
+     without removing any of this code.
      ========================================================== */
-  var MEME_URL = "";
+  var MEME_URL = "https://rodrigoh.netlify.app/";
 
   var dot = document.getElementById('dot'),
       egg = document.getElementById('egg'),
