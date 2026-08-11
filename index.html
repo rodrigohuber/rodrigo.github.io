@@ -104,6 +104,25 @@
   .cred b{display:block;font-size:.94rem;font-weight:650;margin-bottom:.15rem}
   .cred span{font-size:.8rem;color:var(--dim)}
 
+  /* ---------- faixa do evento (TEMPORÁRIA — remover depois de 13/08/2026) ---------- */
+  .evbar{display:block;background:linear-gradient(90deg,var(--sun),#ff9a3c);color:#20160a;
+    text-decoration:none;font-weight:750;font-size:.9rem;text-align:center;padding:.62rem 1rem;
+    line-height:1.35}
+  .evbar:hover{color:#20160a;filter:brightness(1.06)}
+  .evbar b{font-weight:850}
+
+  /* ---------- chamada do concurso, antes dos contatos ---------- */
+  .concurso{background:linear-gradient(150deg,#17243a,var(--card));border:1px solid var(--sun);
+    border-radius:14px;padding:1.4rem 1.5rem;display:flex;flex-wrap:wrap;gap:1rem;
+    align-items:center;justify-content:space-between}
+  .concurso .tx{flex:1 1 20rem;min-width:0}
+  .concurso .tag{color:var(--sun);margin-bottom:.35rem}
+  .concurso h3{margin:0 0 .4rem;font-size:1.15rem;font-weight:750;line-height:1.25}
+  .concurso p{margin:0;font-size:.9rem;color:var(--mist)}
+  .concurso .go{flex:0 0 auto;background:var(--sun);color:#20160a;font-weight:800;
+    padding:.7rem 1.3rem;border-radius:999px;font-size:.94rem;white-space:nowrap}
+  .concurso .go:hover{color:#20160a;filter:brightness(1.07)}
+
   /* ---------- links ---------- */
   .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:.6rem}
   .link{display:flex;align-items:center;gap:.75rem;background:var(--card);
@@ -135,6 +154,9 @@
 </style>
 </head>
 <body>
+
+<!-- ⏳ FAIXA TEMPORÁRIA DO EVENTO — REMOVER DEPOIS DE 13/08/2026 -->
+<a class="evbar" href="concurso/">🏆 <b>Blockchain Rio, 12 e 13/08:</b> conte a pior previsão sobre cripto que você já viu &mdash; e leve até 0,01 BTC em serviços &rarr;</a>
 
 <header class="hero">
   <div class="wrap">
@@ -342,6 +364,21 @@
     <p style="margin-top:1.3rem">
       <a class="cvbtn" href="cv/">Ver currículo completo &rarr;</a>
     </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Antes de ir embora</h2>
+    <div class="concurso">
+      <div class="tx">
+        <p class="tag">Concurso &middot; Blockchain Rio, 12 e 13 de agosto</p>
+        <h3>Qual é a pior previsão sobre cripto que você já viu &mdash; ou fez?</h3>
+        <p>Uma ou duas frases. A que eu mais gostar leva <b>até 0,01 BTC em serviços</b> &mdash;
+          aulas de criptoativos, intermediação, ou o que combinarmos. Respostas até 13/08, 19h.</p>
+      </div>
+      <a class="go" href="concurso/">Participar &rarr;</a>
+    </div>
   </div>
 </section>
 
