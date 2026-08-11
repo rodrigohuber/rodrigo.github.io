@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ForeSight 3.0 — Momento Pitch, Palco Sebrae</title>
+<style>
+  :root{
+    --bg:#1f3a8a; --bg3:#5b76c9;
+    --ink:#1c1c2e; --muted:#5a5a6e;
+    --alert:#b00020; --good:#1b7a3d; --block:#e9edf9; --page:#fff;
+    --k:#2a5db0; --r:#0f8a8a; --rel:#7a3fb0; --q:#1b7a3d; --mo:#c77700; --ev:#5a5a6e; --epi:#b00020;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:#20202a;font-family:"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink)}
+  #stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+  .slide{position:relative;display:none;flex-direction:column;width:min(100vw,calc(100vh * 16 / 9));aspect-ratio:16/9;
+    background:var(--page);box-shadow:0 10px 40px rgba(0,0,0,.55);overflow:hidden;border-radius:2px;
+    font-size:calc(min(97vw,1220px)/40)}
+  .slide.active{display:flex}
+  .headline{height:1.55em;background:var(--bg);color:#fff;display:flex;align-items:center;padding:0 .8em;
+    font-size:.6em;font-weight:600;flex:0 0 auto}
+  .headline .deck{margin-left:auto;opacity:.8}
+  .body{flex:1 1 auto;padding:.5em 1.05em .15em;overflow:hidden;display:flex;flex-direction:column;min-height:0}
+  .ftitle{color:var(--bg);font-size:1.12em;font-weight:800;margin:.06em 0 .12em;line-height:1.08}
+  .ftitle .sub{display:block;color:var(--muted);font-size:.5em;font-weight:600;margin-top:.12em}
+  hr.rule{border:none;border-top:2px solid var(--bg);opacity:.22;margin:.08em 0 .3em}
+  p{margin:.22em 0;line-height:1.26}
+  ul{margin:.14em 0;padding-left:1.05em;line-height:1.26}
+  li{margin:.12em 0;list-style:none;position:relative}
+  li::before{content:"\25B8";color:var(--bg);position:absolute;left:-.95em}
+  li li::before{content:"\2013";color:var(--muted)}
+  .muted{color:var(--muted)} .alert{color:var(--alert);font-weight:700} .good{color:var(--good);font-weight:700}
+  .stat{font-weight:700;color:var(--bg)}
+  code,.mono{font-family:Consolas,monospace;background:#f0f0f8;padding:.02em .24em;border-radius:3px;font-size:.9em}
+
+  .badge{display:inline-block;color:#fff;font-size:.52em;font-weight:800;padding:.05em .5em;border-radius:.8em;vertical-align:middle}
+  .b-hoje{background:var(--good)} .b-road{background:var(--mo)}
+
+  .ecard{border:1px solid #d3d3e6;border-radius:7px;padding:.24em .5em .3em;background:#fbfbff;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+  .ecard .en{font-weight:800;font-size:.9em}
+  .ecard .ek{font-family:Consolas,monospace;font-size:.62em;color:var(--muted);margin-left:.4em}
+  .ecard .ed{color:var(--ink);font-size:.72em;line-height:1.22;margin-top:.1em}
+
+  .gloss{border-left:4px solid var(--r);background:#eaf6f6;padding:.16em .55em;font-size:.76em;margin-top:.22em;line-height:1.24}
+  .gloss .lbl{color:#0c6a6a;font-weight:800;font-size:.82em;letter-spacing:.04em;margin-right:.3em}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:.4em}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.36em}
+  .cols{display:flex;gap:.6em}.cols>div{flex:1}
+
+  .block{border-radius:6px;overflow:hidden;margin:.28em 0;border:1px solid #d6d6ee}
+  .block>.bt{background:var(--bg);color:#fff;font-weight:700;padding:.15em .6em;font-size:.8em}
+  .block>.bb{background:var(--block);padding:.26em .6em;font-size:.9em;line-height:1.26}
+  .block.alertblock>.bt{background:var(--alert)} .block.alertblock>.bb{background:#fbe9ec}
+  .block.goodblock>.bt{background:var(--good)} .block.goodblock>.bb{background:#e7f5ec}
+  .block.warnblock>.bt{background:var(--mo)} .block.warnblock>.bb{background:#fdf3e3}
+
+  table.t{border-collapse:collapse;width:100%;font-size:.74em;margin:.16em 0}
+  table.t th,table.t td{border:1px solid #cfcfe6;padding:.15em .4em;text-align:left;vertical-align:top}
+  table.t th{background:var(--block)}
+  table.t.dense{font-size:.62em}
+  table.t.dense th,table.t.dense td{padding:.12em .3em}
+  .twrap{overflow-y:auto;overflow-x:hidden;flex:1 1 auto;min-height:0}
+
+  .qtags{display:flex;flex-wrap:wrap;gap:.22em;margin-top:.14em}
+  .qtag{font-size:.64em;border:1px solid #cbe0cb;background:#eef8ef;border-radius:.7em;padding:.04em .5em;font-weight:600;color:#1b5e2a}
+  .qtag.hot{border-color:#e6b8bf;background:#fbeef0;color:#8a1020}
+
+  .seed{border-left:4px solid var(--mo);background:#fff8ec;padding:.18em .55em;font-size:.78em;margin-top:.24em;line-height:1.24}
+
+  .steps{counter-reset:s;margin:.2em 0}
+  .steps .st{display:flex;gap:.5em;margin:.16em 0;align-items:flex-start;font-size:.86em;line-height:1.24}
+  .steps .st .n{flex:0 0 auto;width:1.5em;height:1.5em;border-radius:50%;background:var(--bg);color:#fff;
+    font-weight:800;font-size:.8em;display:flex;align-items:center;justify-content:center}
+  .steps .st.rm .n{background:var(--alert)}
+
+  /* bar chart — same token vocabulary (var(--bg) fill, var(--block) track) */
+  .barlist{margin:.2em 0}
+  .brow{display:flex;align-items:center;gap:.4em;margin:.14em 0;font-size:.72em}
+  .brow .lb{flex:0 0 7.5em;text-align:right;color:var(--muted);font-weight:600}
+  .brow .track{flex:1 1 auto;display:block;background:var(--block);height:1.15em;border-radius:2px;position:relative}
+  .brow .fill{display:block;background:var(--bg);height:100%;border-radius:2px}
+  .brow .fill.hot{background:var(--alert)} .brow .fill.ok{background:var(--good)}
+  .brow .vl{flex:0 0 3.2em;font-weight:700;color:var(--ink)}
+
+  .footline{flex:0 0 auto;display:flex;height:1.3em;font-size:.46em;color:#fff}
+  .footline div{display:flex;align-items:center;padding:0 .8em;white-space:nowrap;overflow:hidden}
+  .fl1{background:#12245c;flex:0 0 26%}.fl2{background:var(--bg);flex:1 1 auto}.fl3{background:var(--bg3);flex:0 0 15%;justify-content:flex-end}
+
+  .titleframe{justify-content:center;align-items:center;text-align:center;background:radial-gradient(120% 120% at 50% 0%,#fff 60%,#e8ecf9 100%)}
+  .titleframe .footline{position:absolute;left:0;right:0;bottom:0;width:100%}
+  .titleframe .tt{color:var(--bg);font-size:1.45em;font-weight:800;line-height:1.12;max-width:90%}
+  .titleframe .ts{color:var(--ink);font-size:.62em;margin-top:.5em;max-width:84%;line-height:1.35}
+  .titleframe .au{margin-top:.9em;font-size:.58em}.titleframe .au b{color:var(--bg)}
+  .titleframe .ve{margin-top:.4em;font-size:.46em;color:var(--muted)}
+  .rule-blue{width:46%;border-top:3px solid var(--bg);opacity:.5;margin:.55em 0}
+
+  #prog{position:fixed;left:0;bottom:0;height:4px;background:var(--bg3);width:0;transition:width .2s}
+  #hint{position:fixed;right:10px;bottom:8px;color:#8a8a9a;font-size:12px;font-family:monospace}
+
+  .roadmap{margin-top:auto;font-family:Consolas,monospace;font-size:.56em;color:var(--muted);line-height:1.55;margin-bottom:.35em}
+  .roadmap b{color:var(--bg)}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 1 TITLE -->
+<section class="slide titleframe active">
+  <div class="tt">ForeSight 3.0</div>
+  <div class="rule-blue"></div>
+  <div class="ts">Previsão de criptoativos com validação científica &mdash; a ponte entre a pesquisa
+    de doutorado em previsão e séries temporais e a operação real de portfólio.<br>
+    <b style="color:var(--good)">Projeto selecionado para o Momento Pitch &mdash; Palco Sebrae.</b></div>
+  <div class="au"><b>Rodrigo</b> &nbsp;&middot;&nbsp; doutorando &mdash; previsão, otimização de portfólio, ciência de dados</div>
+  <div class="ve">Momento Pitch Palco Sebrae &nbsp;|&nbsp; BTC + ETH, 9,4 milhões de barras de 1 minuto, 2017&ndash;2026 &nbsp;|&nbsp; 12/08/2026</div>
+  <div class="footline"><div class="fl1">Rodrigo</div><div class="fl2">ForeSight 3.0 &mdash; Palco Sebrae</div><div class="fl3"></div></div>
+</section>
+
+<!-- 2 A SELEÇÃO SEBRAE -->
+<section class="slide">
+  <div class="headline"><span>A seleção</span><span class="deck">ForeSight 3.0</span></div>
+  <div class="body">
+    <div class="ftitle">Selecionado para o Momento Pitch &mdash; Palco Sebrae
+      <span class="sub">o ForeSight 3.0 passou pela chamada e foi para o palco</span></div>
+    <hr class="rule">
+    <div class="cols">
+      <div>
+        <table class="t">
+          <tr><th>Chamada</th><td>Momento Pitch &mdash; Palco Sebrae</td></tr>
+          <tr><th>Projeto</th><td><b>ForeSight 3.0</b></td></tr>
+          <tr><th>Data</th><td>12 de agosto de 2026, 13h50</td></tr>
+          <tr><th>Formato</th><td>10 minutos por startup</td></tr>
+          <tr><th>Divisão</th><td>5 min de pitch + 5 min de banca<br><span class="muted">(ou 3 + 7, a critério da startup)</span></td></tr>
+          <tr><th>Avaliação</th><td>Banca presencial</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="block goodblock"><div class="bt">O que a seleção significa</div><div class="bb">
+          Uma banca do Sebrae olhou o projeto e decidiu que ele merece palco. É a primeira validação
+          externa do ForeSight 3.0 &mdash; feita por gente que avalia startup de ofício, não por
+          quem construiu.</div></div>
+        <div class="block"><div class="bt">Resultado</div><div class="bb">
+          <span class="muted">A ser preenchido após a apresentação de 12/08.</span></div></div>
+      </div>
+    </div>
+    <div class="gloss"><span class="lbl">O QUE VEM A SEGUIR</span>Os slides seguintes são o pitch:
+      o problema, a tração medida, os achados que ninguém publica, o método, o produto e o pedido.</div>
+  </div>
+  <div class="footline"><div class="fl1">Rodrigo</div><div class="fl2">ForeSight 3.0 &mdash; Palco Sebrae</div><div class="fl3"></div></div>
+</section>
+
+<!-- 3 PROBLEMA -->
+<section class="slide">
+  <div class="headline"><span>I &middot; O problema</span><span class="deck">ForeSight 3.0</span></div>
+  <div class="body">
+    <div class="ftitle">Em cripto, todo mundo mostra o backtest que deu certo
+      <span class="sub">e ninguém mostra os que morreram &mdash; que são a maioria</span></div>
+    <hr class="rule">
+    <ul>
+      <li><b>O incentivo é publicar o acerto.</b> Um backtest com viés de lookahead infla o resultado
+        histórico e nunca é auditado por quem compra o sinal.</li>
+      <li><b>Protocolos DeFi, DAOs e tesourarias decidem com isso.</b> Alocação, parâmetros de risco,
+        rebalanceamento &mdash; tudo apoiado em número que ninguém consegue reproduzir.</li>
+      <li><b>Não existe rastro.</b> Quando o sinal erra, não há registro do que foi prometido, quando,
+        e com que método.</li>
+    </ul>
+    <div class="gloss"><span class="lbl">A APOSTA</span>Quem conseguir provar que o método é honesto &mdash;
+      inclusive mostrando o que falhou &mdash; vira infraestrutura de decisão, não mais um vendedor de sinal.</div>
+  </div>
+  <div class="footline"><div class="fl1">Rodrigo</div><div class="fl2">ForeSight 3.0 &mdash; Palco Sebrae</div><div class="fl3"></div></div>
+</section>
+
+<!-- 3 SCOREBOARD -->
+<section class="slide">
+  <div class="headline"><span>II &middot; Tração &mdash; o que já foi medido</span><span class="deck">ForeSight 3.0</span></div>
+  <div class="body">
+    <div class="ftitle">Sete estratégias testadas. Seis mortas. Uma sobrevive.
+      <span class="sub">O rigor matou as nossas próprias ideias &mdash; é essa a prova de que ele funciona</span></div>
+    <hr class="rule">
+    <table class="t dense">
+      <tr><th>Testado</th><th>Veredicto</th><th>Evidência</th></tr>
+      <tr><td>Direção no minuto, a partir do preço</td><td class="alert">MORTO</td><td>R&sup2; &minus;1,02 vs prever zero; acerto 49,4%</td></tr>
+      <tr><td>38 indicadores clássicos de análise técnica</td><td class="alert">MORTO</td><td>1 sobrevive à correção &mdash; e aponta para o lado errado</td></tr>
+      <tr><td>GARCH / GJR-GARCH / EGARCH</td><td class="alert">PERDEM</td><td>os três ficam <i>abaixo</i> do ingênuo</td></tr>
+      <tr><td>Nosso modelo de vol. vs o mercado de opções</td><td class="alert">PERDEU</td><td>DVOL RMSE 0,227 vs nosso 0,311</td></tr>
+      <tr><td>Prêmio de variância, após custos</td><td class="alert">EMPATE</td><td>breakeven em ~1,5 ponto de vol por giro</td></tr>
+      <tr><td>Carry de funding (spot comprado / perp vendido)</td><td class="alert">ARBITRADO</td><td>30,6% em 2021 &rarr; 3,4% nos últimos 12 meses</td></tr>
+      <tr><td>Dados de posicionamento (OI, top traders)</td><td class="alert">MORTO</td><td>0 de 16 features sobrevivem à correção</td></tr>
+      <tr><td><b>Trend following + sizing por volatilidade</b></td><td class="good">SOBREVIVE</td><td>bate comprar-e-segurar em BTC <i>e</i> ETH</td></tr>
+    </table>
+  </div>
+  <div class="footline"><div class="fl1">Rodrigo</div><div class="fl2">ForeSight 3.0 &mdash; Palco Sebrae</div><div class="fl3"></div></div>
+</section>
+
+<!-- 4 O SOBREVIVENTE -->
+<section class="slide">
+  <div class="headline"><span>II &middot; Tração</span><span class="deck">ForeSight 3.0</span></div>
+  <div class="body">
+    <div class="ftitle">O que sobrou funciona nos dois ativos
+      <span class="sub">Sharpe, barras diárias, custo de 10 bps &mdash; grade completa, não a melhor célula</span></div>
+    <hr class="rule">
+    <div class="cols">
+      <div>
+        <table class="t dense">
+          <tr><th>Janela</th><th>BTC</th><th>ETH</th><th>Máx. queda BTC</th></tr>
+          <tr><td>30d</td><td><b>0,99</b></td><td><b>0,81</b></td><td>0,54</td></tr>
+          <tr><td>60d</td><td>0,92</td><td>0,73</td><td>0,72</td></tr>
+          <tr><td>90d</td><td>0,61</td><td>0,49</td><td>0,71</td></tr>
+          <tr><td>180d</td><td>0,59</td><td>0,31</td><td>0,73</td></tr>
+          <tr><td>365d</td><td>0,61</td><td>0,40</td><td>0,66</td></tr>
+          <tr><td><i>comprar e segurar</i></td><td><i>0,45</i></td><td><i>0,25</i></td><td><i>1,15</i></td></tr>
+        </table>
+      </div>
+      <div style="font-size:.9em">
+        <div class="block goodblock"><div class="bt">Por que isso é crível</div><div class="bb">
+          A ordem entre janelas é <b>quase idêntica em dois ativos independentes</b>. Um padrão que só
+          existe no Bitcoin é um fato sobre o Bitcoin &mdash; não um método.</div></div>
+        <div class="block"><div class="bt">Onde está o valor</div><div class="bb">
+          Na <b>proteção de queda</b>: quedas máximas caem pela metade, e em 2021&ndash;22 toda variante
+          perdeu menos do que segurar.</div></div>
+        <div class="block alertblock"><div class="bt">O limite, dito por nós</div><div class="bb">
+          Erro padrão do Sharpe &asymp; 0,35: a margem é de 0,5 a 1,5 EP. <b>Sugestivo, não conclusivo</b> &mdash;
+          e trend following é prêmio de risco conhecido, não descoberta nossa.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footline"><div class="fl1">Rodrigo</div><div class="fl2">ForeSight 3.0 &mdash; Palco Sebrae</div><div class="fl3"></div></div>
+</section>
+
+<!-- 5 O ACHADO CARO -->
+<section class="slide">
+  <div class="headline"><span>III &middot; O achado que ninguém vende</span><span class="deck">ForeSight 3.0</span></div>
+  <div class="body">
+    <div class="ftitle">Uma previsão melhor é um dimensionador de posição pior
+      <span class="sub">o resultado que mais custou para aprender &mdash; e o que mais vale para um cliente</span></div>
+    <hr class="rule">
+    <div class="cols">
+      <div>
+        <table class="t">
+          <tr><th>Sizing</th><th>Sharpe</th><th>Giro/ano</th></tr>
+          <tr><td>vol. realizada simples, 20 dias</td><td class="good"><b>0,61</b></td><td>7&times;</td></tr>
+          <tr><td>nossa previsão LightGBM</td><td class="alert">0,50</td><td>48&times;</td></tr>
+        </table>
+        <p style="font-size:.78em">O modelo LightGBM bate o HAR em <span class="stat">30%</span> de acurácia
+          &mdash; e mesmo assim perde como dimensionador, com <b>7&times; mais giro</b> (logo, mais custo).</p>
+      </div>
+      <div>
+        <div class="block warnblock"><div class="bt">Previsão e posição são objetivos diferentes</div><div class="bb">
+          Previsão premia <b>responsividade</b>. Dimensionamento premia <b>estabilidade</b>.
+          Nenhuma acurácia adicional conserta isso.</div></div>
+        <div class="seed">É exatamente aqui que a ponte academia&nbsp;&rarr;&nbsp;operação se paga: o time que só
+          otimiza métrica de previsão gasta meses no objetivo errado. Nós já pagamos essa conta &mdash; e medimos.</div>
+      </div>
+    </div>
+  </div>
+  <div class="footline"><div class="fl1">Rodrigo</div><div class="fl2">ForeSight 3.0 &mdash; Palco Sebrae</div><div class="fl3"></div></div>
+</section>
+
+<!-- 6 EFICIENCIA DE MERCADO / FUNDING -->
+<section class="slide">
+  <div class="headline"><span>III &middot; O achado que ninguém vende</span><span class="deck">ForeSight 3.0</span></div>
+  <div class="body">
+    <div class="ftitle">O carry de funding existiu &mdash; e foi arbitrado
+      <span class="sub">taxa anualizada de funding, Binance, 7.212 liquidações</span></div>
+    <hr class="rule">
+    <div class="barlist">
+      <div class="brow"><span class="lb">2020</span><span class="track"><span class="fill" style="width:56%"></span></span><span class="vl">17,2%</span></div>
+      <div class="brow"><span class="lb">2021</span><span class="track"><span class="fill ok" style="width:100%"></span></span><span class="vl">30,6%</span></div>
+      <div class="brow"><span class="lb">2022</span><span class="track"><span class="fill" style="width:14%"></span></span><span class="vl">4,2%</span></div>
+      <div class="brow"><span class="lb">2023</span><span class="track"><span class="fill" style="width:26%"></span></span><span class="vl">7,9%</span></div>
+      <div class="brow"><span class="lb">2024</span><span class="track"><span class="fill" style="width:39%"></span></span><span class="vl">11,9%</span></div>
+      <div class="brow"><span class="lb">2025</span><span class="track"><span class="fill" style="width:17%"></span></span><span class="vl">5,1%</span></div>
+      <div class="brow"><span class="lb">2026*</span><span class="track"><span class="fill hot" style="width:6%"></span></span><span class="vl">1,9%</span></div>
+    </div>
+    <div class="cols">
+      <div class="block alertblock"><div class="bt">Últimos 12 meses: 3,4%</div><div class="bb">
+        Um título público paga o equivalente, sem risco de contraparte de exchange, sem capital de
+        margem, sem risco de liquidação.</div></div>
+      <div class="block"><div class="bt">E o Sharpe 17?</div><div class="bb">
+        O carry ingênuo dá Sharpe <b>17</b> &mdash; número que deve ser <b>desacreditado à primeira vista</b>.
+        Com 5% de erro de hedge: 2,35. Com 10%: 1,18.</div></div>
+    </div>
+  </div>
+  <div class="footline"><div class="fl1">Rodrigo</div><div class="fl2">ForeSight 3.0 &mdash; Palco Sebrae</div><div class="fl3"></div></div>
+</section>
+
+<!-- 7 METODO -->
+<section class="slide">
+  <div class="headline"><span>IV &middot; O diferencial</span><span class="deck">ForeSight 3.0</span></div>
+  <div class="body">
+    <div class="ftitle">O produto não é o sinal. É o processo que reprova sinais.
+      <span class="sub">disciplina de método aplicada em todos os sete testes acima</span></div>
+    <hr class="rule">
+    <div class="steps">
+      <div class="st"><div class="n">1</div><div><b>Divisão cronológica sempre.</b> Nunca aleatória em série temporal. Escalonadores ajustados só na janela de treino.</div></div>
+      <div class="st"><div class="n">2</div><div><b>Walk-forward:</b> cada bloco é pontuado <i>antes</i> de ser treinado &mdash; sem viés de lookahead.</div></div>
+      <div class="st"><div class="n">3</div><div><b>Custos cobrados em todo lugar.</b> Backtest sem custo é ficção; o número sem custo nunca é reportado sozinho.</div></div>
+      <div class="st"><div class="n">4</div><div><b>Correção para testes múltiplos</b> (Benjamini-Hochberg) ao testar 38 indicadores de uma vez.</div></div>
+      <div class="st"><div class="n">5</div><div><b>Grade completa reportada</b>, não a melhor célula. É a diferença entre resultado e propaganda.</div></div>
+      <div class="st"><div class="n">6</div><div><b>Proveniência:</b> todo arquivo de origem verificado por SHA-256; todo número gerado por script versionado.</div></div>
+    </div>
+    <div class="gloss"><span class="lbl">HONESTIDADE</span>Dois bugs produziram respostas erradas e <i>plausíveis</i> &mdash;
+      pegos por serem implausíveis, não por teste quebrado. Um vazamento de retorno futuro dava correlação exatamente 1,000.
+      Está documentado no repositório.</div>
+  </div>
+  <div class="footline"><div class="fl1">Rodrigo</div><div class="fl2">ForeSight 3.0 &mdash; Palco Sebrae</div><div class="fl3"></div></div>
+</section>
+
+<!-- 8 PRODUTO: HOJE vs ROADMAP -->
+<section class="slide">
+  <div class="headline"><span>V &middot; O produto</span><span class="deck">ForeSight 3.0</span></div>
+  <div class="body">
+    <div class="ftitle">O que roda hoje, e o que é roteiro
+      <span class="sub">a separação é explícita de propósito &mdash; é o oposto do que o mercado faz</span></div>
+    <hr class="rule">
+    <div class="cols">
+      <div>
+        <div class="block goodblock"><div class="bt">RODA HOJE <span class="badge b-hoje">VALIDADO</span></div><div class="bb">
+          <ul style="font-size:.92em">
+            <li>Base própria: BTC+ETH, 9,4M barras de 1 min, 2017&ndash;2026</li>
+            <li>DVOL Deribit (32.987 h), funding (7.212), posicionamento (377.719 pontos)</li>
+            <li>Motor de backtest com custos, walk-forward e testes de vazamento</li>
+            <li>Estratégia de tendência validada e replicada em 2 ativos</li>
+            <li>Previsão ao vivo com registro e pontuação (<span class="mono">forecast_now.py</span>)</li>
+            <li>27 módulos Python &middot; 24 commits &middot; relatório publicado</li>
+          </ul></div></div>
+      </div>
+      <div>
+        <div class="block warnblock"><div class="bt">ROTEIRO <span class="badge b-road">A CONSTRUIR</span></div><div class="bb">
+          <ul style="font-size:.92em">
+            <li><b>Paper trading ao vivo</b> &mdash; o próximo passo real, contato com slippage</li>
+            <li>Explicabilidade por SHAP: o "porquê" de cada sinal</li>
+            <li>Transfer learning zero/few-shot para ativos com pouco histórico</li>
+            <li>Publicação on-chain via oráculo &mdash; sinal auditável e resistente a manipulação</li>
+            <li>Retreino automático por detecção de <i>concept drift</i></li>
+          </ul></div></div>
+        <div class="seed">A camada zero-shot/few-shot já é o objeto do doutorado em previsão &mdash; entra aqui como
+          transferência de método, não como promessa nova.</div>
+      </div>
+    </div>
+  </div>
+  <div class="footline"><div class="fl1">Rodrigo</div><div class="fl2">ForeSight 3.0 &mdash; Palco Sebrae</div><div class="fl3"></div></div>
+</section>
+
+<!-- 9 CLIENTE E PEDIDO -->
+<section class="slide">
+  <div class="headline"><span>VI &middot; Cliente e pedido</span><span class="deck">ForeSight 3.0</span></div>
+  <div class="body">
+    <div class="ftitle">Quem paga por previsão auditável</div>
+    <hr class="rule">
+    <div class="grid3">
+      <div class="ecard"><span class="en">Protocolos DeFi</span><div class="ed">Parâmetros de risco e alocação de tesouraria que precisam ser defendidos publicamente perante a comunidade.</div></div>
+      <div class="ecard"><span class="en">DAOs</span><div class="ed">Decisão coletiva exige método reproduzível: a votação precisa de um número que qualquer membro possa auditar.</div></div>
+      <div class="ecard"><span class="en">Gestores e mesas</span><div class="ed">Querem o que reprovou tanto quanto o que passou &mdash; é o que o comitê de risco pergunta.</div></div>
+    </div>
+    <div class="block" style="margin-top:.35em"><div class="bt">O que buscamos</div><div class="bb">
+      <b>Um a dois pilotos</b> &mdash; protocolo, DAO ou tesouraria disposta a testar previsão auditável
+      contra o próprio processo de decisão. E os parceiros para levar o rastro público de previsões
+      ao vivo ao ar.</div></div>
+    <div class="gloss"><span class="lbl">PRIMEIRO MARCO</span>Rastro público de previsões ao vivo, datado e pontuado &mdash;
+      a única prova que um cliente institucional aceita, e a que ninguém no setor mostra.</div>
+  </div>
+  <div class="footline"><div class="fl1">Rodrigo</div><div class="fl2">ForeSight 3.0 &mdash; Palco Sebrae</div><div class="fl3"></div></div>
+</section>
+
+<!-- 10 FECHO -->
+<section class="slide">
+  <div class="headline"><span>Fecho</span><span class="deck">ForeSight 3.0</span></div>
+  <div class="body">
+    <div class="ftitle">Ciência de dados testada, não hype</div>
+    <hr class="rule">
+    <div class="block goodblock"><div class="bt">Em uma frase</div><div class="bb">
+      Testamos sete estratégias, <b>matamos seis</b>, e a que sobrou foi replicada em dois ativos independentes.
+      Um time que publica os próprios fracassos é um time em quem se pode apoiar uma decisão de capital.</div></div>
+    <div class="cols">
+      <div class="block"><div class="bt">A base</div><div class="bb">
+        BTC + ETH &middot; 9,4M barras de 1 minuto &middot; 2017&ndash;2026 &middot; todo arquivo verificado por SHA-256</div></div>
+      <div class="block"><div class="bt">A ponte</div><div class="bb">
+        Doutorado em previsão e séries temporais &rarr; operação real de portfólio</div></div>
+    </div>
+    <div class="gloss"><span class="lbl">CONTATO</span>
+      <a href="https://rodrigohuber.github.io/">rodrigohuber.github.io</a> &middot;
+      <a href="https://github.com/rodrigohuber/ForeSight-3.0">github.com/rodrigohuber/ForeSight-3.0</a> &middot;
+      rodrigohubermendes@gmail.com &mdash; o código, a grade de parâmetros inteira e os limites
+      declarados estão abertos.</div>
+  </div>
+  <div class="footline"><div class="fl1">Rodrigo</div><div class="fl2">ForeSight 3.0 &mdash; Palco Sebrae</div><div class="fl3"></div></div>
+</section>
+
+</div>
+<div id="prog"></div>
+<div id="hint">&larr; / &rarr; &middot; clique &middot; F = tela cheia</div>
+<script>
+  const slides=[...document.querySelectorAll('.slide')]; let i=0;
+  slides.forEach((s,k)=>{const f=s.querySelector('.fl3');if(f)f.textContent=(k+1)+' / '+slides.length;});
+  function show(n){i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    document.getElementById('prog').style.width=((i+1)/slides.length*100)+'%'; fit();}
+  function fit(){const s=slides[i];const w=s.clientWidth;if(w)s.style.fontSize=(w/40)+'px';}
+  function next(){show(i+1)} function prev(){show(i-1)}
+  document.addEventListener('keydown',e=>{
+    if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next()}
+    else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev()}
+    else if(e.key==='Home'){show(0)} else if(e.key==='End'){show(slides.length-1)}
+    else if(e.key==='f'||e.key==='F'){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen();}});
+  document.getElementById('stage').addEventListener('click',e=>{const x=e.clientX/window.innerWidth;if(x>0.5)next();else prev();});
+  let touchStartX=0, touchStartY=0;
+  document.getElementById('stage').addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX;touchStartY=e.changedTouches[0].screenY;},{passive:true});
+  document.getElementById('stage').addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].screenX-touchStartX, dy=e.changedTouches[0].screenY-touchStartY;
+    if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)*1.5){ if(dx<0) next(); else prev(); }
+  },{passive:true});
+  window.addEventListener('resize',fit); show(0);
+</script>
+</body>
+</html>
