@@ -83,6 +83,19 @@
   .card .go{margin-top:auto;font-size:.82rem;overflow-wrap:anywhere}
 
   /* ---------- credentials ---------- */
+  /* ---------- timeline ---------- */
+  .tl{display:grid;gap:.1rem}
+  .tlrow{display:grid;grid-template-columns:8.5rem 1fr;gap:.3rem 1.1rem;padding:.7rem 0;
+    border-top:1px solid var(--line);align-items:start}
+  .tlrow:last-child{border-bottom:1px solid var(--line)}
+  .tlrow .yr{font-size:.79rem;color:var(--volt);font-weight:750;letter-spacing:.03em;padding-top:.12rem}
+  .tlrow .wt{font-size:.9rem;color:var(--mist)}
+  .tlrow .wt b{color:var(--foam);font-weight:650}
+  @media(max-width:620px){.tlrow{grid-template-columns:1fr}}
+  .cvbtn{display:inline-block;background:var(--swell);color:#04121f;font-weight:750;
+    padding:.6rem 1.3rem;border-radius:999px;font-size:.9rem}
+  .cvbtn:hover{background:var(--volt);color:#04121f}
+
   .cred{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.7rem}
   .cred div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.9rem 1rem}
   .cred b{display:block;font-size:.94rem;font-weight:650;margin-bottom:.15rem}
@@ -127,10 +140,14 @@
     <p class="lede">Cientista de dados. Trabalho onde <b>previsão</b>, <b>otimização sob incerteza</b>
       e <b>simulação</b> se encontram — e onde o método acadêmico precisa sobreviver ao contato com
       a operação real.</p>
+    <p class="lede">Engenheiro mecânico de formação e <b>mestre em Metrologia</b> — a ciência da
+      medição — com foco em <b>energia solar</b> e em <b>sistemas de medição de pressão e vazão para
+      Óleo e Gás</b>. Antes de modelar um número, sei o que ele custou para ser medido.</p>
     <ul class="chips">
       <li>Ciência de dados</li><li>Machine learning</li><li>Otimização robusta (DRO)</li>
       <li>Simulação</li><li>Séries temporais</li><li>Transfer learning</li>
-      <li>Quantificação de incerteza</li><li>Energia renovável</li><li>Revisão sistemática PRISMA</li>
+      <li>Metrologia</li><li>Medição de pressão e vazão</li><li>Óleo e Gás</li>
+      <li>Engenharia mecânica</li><li>Energia solar</li><li>Revisão sistemática PRISMA</li>
     </ul>
 
     <div class="proof">
@@ -145,7 +162,7 @@
 <section>
   <div class="wrap">
     <h2>O que eu faço</h2>
-    <p class="h2sub">Cinco competências que se usam juntas: prever, decidir sob incerteza, simular a
+    <p class="h2sub">Sete competências que se usam juntas: prever, decidir sob incerteza, simular a
       decisão antes de tomá-la, e provar que o resultado não é sorte.</p>
     <div class="caps">
 
@@ -183,14 +200,23 @@
       </div>
 
       <div class="cap">
-        <h3><span class="k">05</span> Método e rigor científico</h3>
+        <h3><span class="k">05</span> Metrologia e confiabilidade da medição</h3>
+        <p>Mestre em <b>Metrologia</b> — a ciência da medição. Medição e calibração de
+          <b>temperatura, pressão e vazão</b> para aplicações de Óleo e Gás, e rastreabilidade
+          metrológica sob requisitos da ISO/IEC 17025. Um modelo não é melhor que o instrumento
+          que gerou o dado.</p>
+        <ul class="tools"><li>calibração</li><li>pressão e vazão</li><li>incerteza de medição</li><li>ISO/IEC 17025</li></ul>
+      </div>
+
+      <div class="cap">
+        <h3><span class="k">06</span> Método e rigor científico</h3>
         <p>Revisão sistemática PRISMA, auditoria de resultados e escrita acadêmica sob normas ABNT e
           ISO. Sei construir a evidência — e sei desmontar a que não se sustenta, inclusive a minha.</p>
         <ul class="tools"><li>PRISMA</li><li>ABNT / ISO</li><li>metrologia</li><li>reprodutibilidade</li></ul>
       </div>
 
       <div class="cap">
-        <h3><span class="k">06</span> Ensino</h3>
+        <h3><span class="k">07</span> Ensino</h3>
         <p>Aulas particulares de engenharia, matemática, física e estatística; e auditoria e
           refino de trabalhos acadêmicos.</p>
         <ul class="tools"><li>estatística</li><li>cálculo</li><li>física</li><li>escrita científica</li></ul>
@@ -253,13 +279,27 @@
 
 <section>
   <div class="wrap">
-    <h2>Formação</h2>
-    <div class="cred">
-      <div><b>Doutorado em andamento</b><span>PUC-Rio &middot; machine learning e otimização para energia solar</span></div>
-      <div><b>Mestre em Metrologia</b><span>PUC-Rio &middot; concluído em 2020</span></div>
-      <div><b>Engenheiro Mecânico</b><span>graduação</span></div>
-      <div><b>Bolsista CAPES &middot; FAPERJ Nota 10</b><span>fomento à pesquisa</span></div>
+    <h2>Trajetória</h2>
+    <p class="h2sub">O resumo. O currículo completo — experiência detalhada, publicações,
+      competências e idiomas — está a um clique.</p>
+
+    <div class="tl">
+      <div class="tlrow"><span class="yr">2023 &mdash; hoje</span><span class="wt"><b>Pesquisador de doutorado &middot; coordenação técnica</b> &mdash; PUC-Rio. Previsão solar em 19 sítios brasileiros, transfer learning sob escassez de dados, DRO com Gurobi. Bolsista CAPES e FAPERJ Nota 10.</span></div>
+      <div class="tlrow"><span class="yr">2021 &mdash; 2025</span><span class="wt"><b>Engenheiro de energia solar &middot; operações de campo</b> &mdash; projeto, dimensionamento, supervisão de instalação, comissionamento e diagnóstico em campo.</span></div>
+      <div class="tlrow"><span class="yr">2018 &mdash; 2020</span><span class="wt"><b>Pesquisador de mestrado</b> &mdash; PUC-Rio. Metrologia aplicada à previsão de irradiação solar; medição e calibração para Óleo e Gás.</span></div>
+      <div class="tlrow"><span class="yr">2017 &mdash; 2018</span><span class="wt"><b>Assistente de operações técnicas</b> &mdash; Decision Support. Análise de risco em Óleo e Gás, Seis Sigma, dashboards em Power BI.</span></div>
     </div>
+
+    <div class="cred" style="margin-top:1rem">
+      <div><b>Doutorado em Engenharia de Produção</b><span>PUC-Rio &middot; em andamento, previsto para 2027</span></div>
+      <div><b>Mestre em Metrologia</b><span>PUC-Rio &middot; concluído em 2020</span></div>
+      <div><b>Engenheiro Mecânico</b><span>PUC-Rio</span></div>
+      <div><b>Bolsista CAPES &middot; FAPERJ Nota 10</b><span>modalidade de excelência da FAPERJ</span></div>
+    </div>
+
+    <p style="margin-top:1.3rem">
+      <a class="cvbtn" href="cv/">Ver currículo completo &rarr;</a>
+    </p>
   </div>
 </section>
 

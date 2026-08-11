@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Currículo — Rodrigo Huber Mendes</title>
+<meta name="description" content="Currículo completo de Rodrigo Huber Marques Moreira Mendes — doutorando em Engenharia de Produção (PUC-Rio), Mestre em Metrologia, Engenheiro Mecânico. Machine learning, transfer learning, otimização robusta (DRO) e energia solar.">
+<meta name="color-scheme" content="dark light">
+<style>
+  :root{
+    --deep:#040a12; --card:#0c1a2b; --card2:#0f2136; --line:#183049;
+    --foam:#eff5fc; --mist:#8ba4c0; --dim:#63799a;
+    --swell:#3d9be9; --volt:#5fd3c4; --sun:#ffb454;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--deep);color:var(--foam);
+    font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2rem)}
+  a{color:var(--swell);text-decoration:none}
+  a:hover{color:var(--volt)}
+
+  .back{display:inline-flex;align-items:center;gap:.45rem;font-size:.83rem;color:var(--dim);
+    margin:1.6rem 0 0}
+  .back:hover{color:var(--volt)}
+
+  header.top{padding:1.2rem 0 2rem;border-bottom:1px solid var(--line)}
+  h1{font-size:clamp(1.9rem,5.5vw,2.9rem);line-height:1.05;margin:.5rem 0 .5rem;
+    font-weight:850;letter-spacing:-.02em}
+  .meta{color:var(--dim);font-size:.86rem;margin:0 0 1.2rem;line-height:1.7}
+  .meta a{color:var(--swell)}
+  .actions{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.1rem}
+  .btn{display:inline-block;border-radius:999px;padding:.55rem 1.15rem;font-size:.87rem;font-weight:700}
+  .btn.primary{background:var(--swell);color:#04121f}
+  .btn.primary:hover{background:var(--volt);color:#04121f}
+  .btn.ghost{border:1px solid var(--line);color:var(--foam)}
+  .btn.ghost:hover{border-color:var(--volt);color:var(--foam)}
+
+  .intro{display:grid;gap:.5rem;margin-top:1.6rem}
+  .irow{display:grid;grid-template-columns:8.5rem 1fr;gap:.4rem 1rem;font-size:.9rem;align-items:start}
+  .irow b{color:var(--volt);font-weight:750;font-size:.79rem;letter-spacing:.09em;text-transform:uppercase;padding-top:.16rem}
+  .irow span{color:var(--mist)}
+  @media(max-width:640px){.irow{grid-template-columns:1fr}}
+
+  section{padding:2.1rem 0;border-bottom:1px solid var(--line)}
+  h2{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--volt);
+    margin:0 0 1.1rem;font-weight:800}
+  h3{font-size:1.02rem;margin:0;font-weight:700}
+  .lead{color:var(--mist);font-size:.95rem;margin:0}
+
+  .job{border-left:2px solid var(--line);padding:0 0 0 1.1rem;margin:0 0 1.6rem}
+  .job:last-child{margin-bottom:0}
+  .job .when{float:right;font-size:.79rem;color:var(--dim);font-weight:600;margin-left:1rem}
+  .job .org{color:var(--mist);font-size:.85rem;margin:.15rem 0 .55rem}
+  .job ul{margin:0;padding-left:1.05rem}
+  .job li{margin:.3rem 0;font-size:.885rem;color:var(--mist)}
+  .job li::marker{color:var(--swell)}
+  .job p{margin:.35rem 0 0;font-size:.885rem;color:var(--mist)}
+
+  .pubs .p{background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:.95rem 1.05rem;margin-bottom:.6rem}
+  .pubs .p .k{font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--dim)}
+  .pubs .p .k .st{color:var(--volt)}
+  .pubs .p .t{font-style:italic;margin:.3rem 0 .25rem;font-size:.94rem;color:var(--foam)}
+  .pubs .p .d{font-size:.83rem;color:var(--mist);margin:0}
+
+  .skills{display:grid;gap:.55rem}
+  .sk{display:grid;grid-template-columns:11rem 1fr;gap:.35rem 1rem;background:var(--card);
+    border:1px solid var(--line);border-radius:10px;padding:.75rem .95rem}
+  .sk b{font-size:.79rem;letter-spacing:.06em;text-transform:uppercase;color:var(--volt);font-weight:750}
+  .sk span{font-size:.875rem;color:var(--mist)}
+  @media(max-width:640px){.sk{grid-template-columns:1fr}}
+
+  .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:.6rem}
+  .mini{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.8rem .95rem}
+  .mini b{display:block;font-size:.92rem;font-weight:650}
+  .mini span{font-size:.81rem;color:var(--dim)}
+
+  footer{padding:2rem 0 3rem;color:var(--dim);font-size:.82rem}
+  footer p{margin:.3rem 0}
+
+  @media print{
+    body{background:#fff;color:#111}
+    .back,.actions{display:none}
+    a{color:#111}
+    .job,.mini,.sk,.pubs .p{border-color:#ccc;background:#fff}
+    h2,.irow b,.sk b{color:#111}
+    .lead,.job li,.job p,.job .org,.sk span,.mini span,.meta,.pubs .p .d{color:#333}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../">&larr;&nbsp; voltar para rodrigohuber.github.io</a>
+
+  <header class="top">
+    <h1>Rodrigo Huber Mendes</h1>
+    <p class="meta">
+      Rio de Janeiro, Brasil &nbsp;|&nbsp; Disponível para remoto &nbsp;|&nbsp; Português, Inglês e Espanhol<br>
+      <a href="mailto:rodrigohubermendes@gmail.com">rodrigohubermendes@gmail.com</a> &nbsp;|&nbsp;
+      <a href="https://wa.me/5521998097648" rel="noopener">+55 21 99809-7648</a> &nbsp;|&nbsp;
+      <a href="http://lattes.cnpq.br/0033509075538480" rel="noopener">Lattes</a> &nbsp;|&nbsp;
+      <a href="https://github.com/rodrigohuber" rel="noopener">GitHub</a>
+    </p>
+
+    <div class="intro">
+      <div class="irow"><b>Títulos</b><span>Doutorando em Engenharia de Produção · Mestre em Metrologia · Engenheiro Mecânico</span></div>
+      <div class="irow"><b>Áreas</b><span>Aprendizado de máquina · Transfer learning · Ontologias e métodos neurossimbólicos · Otimização estocástica e robusta (DRO) · Previsão de séries temporais · Sistemas de energia renovável</span></div>
+      <div class="irow"><b>Objetivo</b><span>Atuar na interseção entre aprendizado de máquina, otimização e sistemas de energia renovável, aplicando previsão de séries temporais, transfer learning e otimização robusta sob distribuição (DRO) a problemas reais de pesquisa e indústria</span></div>
+    </div>
+
+    <div class="actions">
+      <a class="btn primary" href="rodrigo-huber-mendes-cv.pdf" download>Baixar o PDF</a>
+      <a class="btn ghost" href="../">Página inicial</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Resumo profissional</h2>
+    <p class="lead">Engenheiro Mecânico com oito anos de atuação técnica em engenharia, dos quais
+      quatro em energia solar — supervisão da execução de projetos, coordenação de equipes de
+      instalação, diagnóstico de problemas em campo e elaboração de documentação operacional precisa.
+      Mestre em Metrologia e doutorando em Engenharia de Produção, com pesquisa focada em previsão de
+      irradiação solar, aprendizado por transferência sob escassez de dados, métodos neurossimbólicos
+      fundamentados em ontologia para avaliação de transferibilidade entre sítios geograficamente
+      diversos, e otimização robusta sob distribuição (DRO).</p>
+  </section>
+
+  <section>
+    <h2>Experiência profissional</h2>
+
+    <div class="job">
+      <span class="when">2023 — presente</span>
+      <h3>Pesquisador de Doutorado — Coordenação Técnica de Projetos</h3>
+      <p class="org">PUC-Rio · Rio de Janeiro, Brasil</p>
+      <ul>
+        <li>Pesquisa de doutorado sobre previsão de irradiação solar em 19 sítios brasileiros, com ênfase em aprendizado por transferência sob severa escassez de dados e condições geográficas heterogêneas</li>
+        <li>Investigação de como o conhecimento de sítios-fonte pode ser transferido para sítios-alvo usando noções de similaridade ontológicas e informadas pelo clima — bioma, geografia e compatibilidade sazonal</li>
+        <li>Exploração de raciocínio neurossimbólico e fundamentado em ontologia para apoiar a avaliação de transferibilidade: quando um novo sítio é suficientemente similar para justificar o reaproveitamento de um modelo já aprendido</li>
+        <li>Emprego de frameworks de otimização — programação inteira-mista, estocástica e robusta sob distribuição (DRO), com o solver Gurobi — no tratamento da incerteza em previsão de energia renovável</li>
+        <li>Implementação de algoritmos e estruturas de dados complexas para processamento de séries temporais em larga escala</li>
+        <li>Gestão de um programa técnico de operações multi-sítio envolvendo 19 localidades de energia solar no Brasil, com coordenação de qualidade de dados, padronização de fluxos, relatórios e consistência de execução</li>
+        <li>Coordenação técnica de pipelines de dados, monitoramento de desempenho e escalonamento de problemas em ambiente ágil de pesquisa e engenharia</li>
+        <li>Treinamento de pesquisadores júniores e colaboradores técnicos em padrões de fluxo de trabalho, procedimentos analíticos e rotinas de controle de qualidade</li>
+        <li>Entrega de relatórios e apresentações técnicas em inglês para audiências internacionais</li>
+        <li>Contemplado com bolsa CAPES e bolsa FAPERJ Nota 10, modalidade de bolsa de excelência da FAPERJ</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <span class="when">2021 — 2025</span>
+      <h3>Engenheiro de Energia Solar Autônomo / Engenheiro de Operações de Campo</h3>
+      <p class="org">Atuação autônoma · Brasil</p>
+      <ul>
+        <li>Condução da execução de projetos de energia solar de ponta a ponta: avaliação do local, projeto do sistema, supervisão da instalação, validação de comissionamento e acompanhamento técnico em múltiplos projetos simultâneos</li>
+        <li>Elaboração do projeto dos sistemas em CAD e SolidWorks, com cálculo de retorno sobre o investimento (ROI) e validação do projeto em tempo real em Python</li>
+        <li>Coordenação de equipes de instalação, eletricistas e técnicos de campo para garantir cronograma, padrões de qualidade, conformidade de segurança e execução precisa das especificações</li>
+        <li>Diagnóstico de problemas operacionais presenciais e remotos sob prazos apertados, com análise rápida de causa-raiz para minimizar tempo de inatividade</li>
+        <li>Aplicação de fundamentos de sistemas elétricos, procedimentos de segurança e normas elétricas brasileiras — NBR 5410 e NBR 16690 — na supervisão e validação de instalações fotovoltaicas</li>
+        <li>Elaboração de relatórios operacionais, documentação técnica e materiais de <i>handover</i>, com comunicação contínua entre equipes de campo, stakeholders e clientes</li>
+        <li>Apoio ao desenvolvimento do pessoal de campo, com reforço de boas práticas de instalação e consistência de execução</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <span class="when">2018 — 2020</span>
+      <h3>Pesquisador de Mestrado — Previsão e Validação Solar</h3>
+      <p class="org">PUC-Rio · Rio de Janeiro, Brasil</p>
+      <ul>
+        <li>Desenvolvimento e validação de modelos de previsão de irradiação solar com ênfase em qualidade de medição, procedimentos de validação, confiabilidade operacional e consistência de dados de campo</li>
+        <li>Medição e calibração de equipamentos para aplicações de Óleo e Gás</li>
+        <li>Estabelecimento de direções de pesquisa fundacionais depois expandidas no doutorado, incluindo transfer learning para previsão de energia renovável e adaptação entre sítios brasileiros distintos</li>
+        <li>Coordenação de fluxos de trabalho desde a aquisição de dados meteorológicos brutos até a validação de modelos e avaliação de desempenho</li>
+        <li>Articulação com stakeholders técnicos e provedores de dados para garantir integridade das medições</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <span class="when">2017 — 2018</span>
+      <h3>Assistente de Operações Técnicas</h3>
+      <p class="org">Decision Support · Brasil</p>
+      <ul>
+        <li>Apoio à otimização operacional e à análise de risco em projetos de Óleo e Gás (estabilidade de poços, <i>kicks</i> e perdas de circulação, prisão de coluna, <i>washouts</i>), com metodologia Seis Sigma e análise técnica rápida para reduzir o Tempo Não Produtivo (NPT)</li>
+        <li>Construção de dashboards em Power BI para visibilidade gerencial sobre desempenho operacional, alocação de recursos e indicadores de execução</li>
+        <li>Colaboração com equipes multidisciplinares de engenharia e operações em ambientes de alta pressão e orientados a prazos</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Formação acadêmica</h2>
+
+    <div class="job">
+      <span class="when">2023 — 2027 (previsto)</span>
+      <h3>Doutorado em Engenharia de Produção</h3>
+      <p class="org">PUC-Rio · Rio de Janeiro, Brasil</p>
+      <p>Orientadores: Prof.ª Fernanda Baião e Prof. Reinaldo Castro Souza. Pesquisa sobre previsão de
+        irradiação solar, aprendizado por transferência sob escassez de dados e raciocínio de
+        transferibilidade neurossimbólico fundamentado em ontologia entre sítios brasileiros
+        heterogêneos. Bolsista FAPERJ Nota 10 e ex-bolsista CAPES.</p>
+    </div>
+
+    <div class="job">
+      <span class="when">2018 — 2020</span>
+      <h3>Mestrado em Metrologia</h3>
+      <p class="org">PUC-Rio · Rio de Janeiro, Brasil</p>
+      <p>Dissertação: “Avaliação metrológica de modelos de previsão a curto prazo da irradiação solar
+        na superfície terrestre”. Orientador: Prof. Alcir de Faro Orlando. Conceito CAPES 5.
+        Bolsista CAPES.</p>
+    </div>
+
+    <div class="job">
+      <span class="when">2009 — 2018</span>
+      <h3>Bacharelado em Engenharia Mecânica</h3>
+      <p class="org">PUC-Rio · Rio de Janeiro, Brasil</p>
+      <p>Monografia: “Validação experimental do desempenho de um sistema de preaquecimento de motores
+        diesel de uma usina termoelétrica com o uso da energia solar” (projeto Gera Maranhão).
+        Orientador: Prof. Alcir de Faro Orlando. Base em sistemas elétricos, termodinâmica, mecânica
+        dos fluidos, normas de engenharia e execução de projetos técnicos.</p>
+    </div>
+  </section>
+
+  <section class="pubs">
+    <h2>Publicações e produção científica</h2>
+
+    <div class="p">
+      <p class="k">FOIS 2026 — Early Career Symposium · <span class="st">aceito</span></p>
+      <p class="t">How Much Local Data Is Enough? An Ontology-Grounded Neurosymbolic Research Agenda for Transferability in Forecasting</p>
+      <p class="d">Early Career Symposium da <i>International Conference on Formal Ontology in Information Systems</i>, com publicação prevista nos FOIS 2026 Satellite Events Proceedings (CEUR-WS). Vitória, ES, Brasil.</p>
+    </div>
+
+    <div class="p">
+      <p class="k">SBPO 2026 — Simpósio Brasileiro de Pesquisa Operacional · <span class="st">submetido</span></p>
+      <p class="t">How Much Local Data Is Enough? Few-Shot Transfer Learning for Solar Irradiation Forecasting Across Brazil</p>
+      <p class="d">Quantifica o orçamento mínimo de dados locais necessário para que o few-shot transfer learning supere o zero-shot em 19 sítios brasileiros climaticamente diversos, identificando um limiar de cruzamento em até cinco meses em 94% dos sítios com margem positiva.</p>
+    </div>
+
+    <div class="p">
+      <p class="k">SBPO 2025 — Simpósio Brasileiro de Pesquisa Operacional</p>
+      <p class="t">Exploring Transfer Learning Techniques for Solar Irradiation Forecast across Geographically Diverse Locations in Brazil Using Reanalysis Data</p>
+      <p class="d">Artigo completo em congresso científico. Gramado, RS, Brasil. Código aberto: <a href="https://github.com/rodrigohuber/zero-shot-solar-forecasting_SBPO25" rel="noopener">github.com/rodrigohuber/zero-shot-solar-forecasting_SBPO25</a></p>
+    </div>
+
+    <div class="p">
+      <p class="k">ISF 2023 — International Symposium on Forecasting</p>
+      <p class="t">Day-ahead Solar Irradiation Forecast Techniques and Outcomes</p>
+      <p class="d">Resumo (abstract). Dijon, França.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Competências técnicas</h2>
+    <div class="skills">
+      <div class="sk"><b>Otimização</b><span>Gurobi · programação inteira-mista (MIP) · programação estocástica · otimização robusta sob distribuição (DRO)</span></div>
+      <div class="sk"><b>Linguagens</b><span>Python · Julia · R · SQL · C · C++ · Assembly · MATLAB · Maple · LaTeX · JavaScript</span></div>
+      <div class="sk"><b>Dados e ML</b><span>Pandas · NumPy · SciPy · scikit-learn · TensorFlow · PyTorch</span></div>
+      <div class="sk"><b>Computação</b><span>Estruturas de dados e algoritmos · CUDA · APIs REST · pipelines JSON · Jupyter · Linux/Unix · Git e GitHub</span></div>
+      <div class="sk"><b>CAD e mecânica</b><span>SolidWorks (incluindo análise por elementos finitos — FEA) · AutoCAD</span></div>
+      <div class="sk"><b>Energia solar</b><span>Sistemas fotovoltaicos · supervisão de instalação · comissionamento · validação em campo · melhoria de fluxos operacionais</span></div>
+      <div class="sk"><b>Normas</b><span>Fundamentos de sistemas elétricos · normas de segurança em instalações · normas elétricas brasileiras · regulamentações de edificações</span></div>
+      <div class="sk"><b>Web (básico)</b><span>HTML5 · CSS3 · React</span></div>
+      <div class="sk"><b>Ferramentas</b><span>Power BI · Microsoft Office · Overleaf</span></div>
+      <div class="sk"><b>Operações</b><span>Análise operacional · sistemas de previsão · automação de relatórios · padronização de processos</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Idiomas</h2>
+    <div class="two">
+      <div class="mini"><b>Português</b><span>Nativo</span></div>
+      <div class="mini"><b>Inglês</b><span>Fluente — mais de 7 anos de estudo formal (Cultura Inglesa e CCAA), imersão de 40 dias nos EUA (2019–2020), aprovação nos exames de proficiência do Mestrado e do Doutorado da PUC-Rio, apresentações técnicas internacionais</span></div>
+      <div class="mini"><b>Espanhol</b><span>Fluente</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Formação complementar</h2>
+    <div class="two">
+      <div class="mini"><b>Medição e Calibração de Temperatura, Pressão e Vazão</b><span>PUC-Rio · certificação</span></div>
+      <div class="mini"><b>Data Science Fundamentals with Python and SQL</b><span>Coursera · curso concluído</span></div>
+      <div class="mini"><b>Applied Data Science with Python</b><span>Coursera · curso concluído</span></div>
+      <div class="mini"><b>Microsoft Power BI Desktop for Business Intelligence</b><span>Udemy · curso concluído</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Rodrigo Huber Marques Moreira Mendes · Rio de Janeiro, Brasil</p>
+    <p>Citação bibliográfica: MENDES, R. H. M. M.</p>
+  </footer>
+
+</div>
+</body>
+</html>
