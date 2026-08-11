@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rodrigo Huber — previsão, otimização, ciência de dados</title>
+<meta name="description" content="Rodrigo Huber Mendes — doutorando em previsão e séries temporais na PUC-Rio. Transfer learning para previsão solar, previsão de criptoativos, otimização de portfólio.">
+<meta name="color-scheme" content="dark light">
+<style>
+  :root{
+    --deep:#050b14; --ground:#08111e; --card:#0d1a2b; --line:#17293f;
+    --foam:#eef4fb; --mist:#8aa2bd; --swell:#3d9be9; --volt:#5fd3c4; --sun:#ffb454;
+    --maxw:940px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--deep);color:var(--foam);
+    font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1.1rem,4vw,2rem)}
+  a{color:var(--swell);text-decoration:none}
+  a:hover{color:var(--volt)}
+
+  /* ---------- hero ---------- */
+  header.hero{position:relative;overflow:hidden;padding:clamp(4rem,13vw,7.5rem) 0 clamp(2.5rem,7vw,4rem)}
+  header.hero::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(120% 90% at 18% -10%,rgba(61,155,233,.20),transparent 62%),
+               radial-gradient(90% 70% at 92% 0%,rgba(95,211,196,.13),transparent 60%);
+    pointer-events:none}
+  .eyebrow{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--volt);
+    margin:0 0 .9rem;font-weight:700}
+  h1{font-size:clamp(2.3rem,7.5vw,4.15rem);line-height:1.02;margin:0 0 1.15rem;
+    font-weight:800;letter-spacing:-.02em}
+  h1 .dot{color:var(--swell);cursor:default;user-select:none;
+    -webkit-tap-highlight-color:transparent;transition:color .25s,text-shadow .25s}
+  h1 .dot.warm{color:var(--sun);text-shadow:0 0 18px rgba(255,180,84,.55)}
+  .lede{font-size:clamp(1.02rem,2.5vw,1.2rem);color:var(--mist);max-width:56ch;margin:0 0 1.6rem}
+  .lede b{color:var(--foam);font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 .3rem;padding:0;list-style:none}
+  .chips li{font-size:.78rem;border:1px solid var(--line);background:rgba(61,155,233,.07);
+    color:var(--mist);padding:.24rem .7rem;border-radius:999px}
+
+  /* ---------- sections ---------- */
+  section{padding:clamp(2.4rem,7vw,3.8rem) 0;border-top:1px solid var(--line)}
+  h2{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--volt);
+    margin:0 0 1.5rem;font-weight:700}
+
+  /* ---------- work ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:.9rem}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1.15rem 1.2rem;display:flex;flex-direction:column;gap:.5rem;
+    transition:border-color .25s,transform .25s}
+  .card:hover{border-color:var(--swell);transform:translateY(-2px)}
+  .tag{font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--mist);margin:0}
+  .tag.live{color:var(--volt)}
+  .card h3{font-size:1.04rem;margin:0;font-weight:650;line-height:1.34}
+  .card p{margin:0;font-size:.9rem;color:var(--mist)}
+  .card .go{margin-top:auto;font-size:.83rem;overflow-wrap:anywhere}
+
+  /* ---------- links ---------- */
+  .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:.65rem}
+  .link{display:flex;align-items:center;gap:.75rem;background:var(--card);
+    border:1px solid var(--line);border-radius:10px;padding:.85rem 1rem;
+    color:var(--foam);transition:border-color .25s,background .25s}
+  .link:hover{border-color:var(--volt);background:#102338;color:var(--foam)}
+  .link .ic{width:1.5rem;text-align:center;font-size:1.05rem;flex:0 0 auto}
+  .link .tx{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+  .link .tx b{font-weight:600;font-size:.94rem}
+  .link .tx span{font-size:.76rem;color:var(--mist);overflow-wrap:anywhere}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:2.2rem 0 3rem;color:var(--mist);font-size:.84rem}
+  footer p{margin:.3rem 0}
+
+  /* ---------- easter egg ---------- */
+  #egg{position:fixed;inset:0;display:none;place-items:center;z-index:50;
+    background:rgba(3,7,13,.82);backdrop-filter:blur(6px);padding:1.2rem}
+  #egg.on{display:grid}
+  .eggbox{background:var(--card);border:1px solid var(--sun);border-radius:14px;
+    padding:1.7rem 1.6rem;max-width:23rem;text-align:center;
+    box-shadow:0 22px 60px rgba(0,0,0,.6)}
+  .eggbox p{margin:0 0 1.1rem;color:var(--foam);font-size:1rem;line-height:1.5}
+  .eggbox .go{display:inline-block;background:var(--sun);color:#20160a;font-weight:750;
+    padding:.6rem 1.2rem;border-radius:999px;font-size:.92rem}
+  .eggbox .go:hover{color:#20160a;filter:brightness(1.08)}
+  .eggbox .close{display:block;margin-top:.9rem;background:none;border:0;color:var(--mist);
+    font-size:.8rem;cursor:pointer;font-family:inherit}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">PUC-Rio &middot; Rio de Janeiro</p>
+    <h1>Rodrigo Huber<span class="dot" id="dot" title="">.</span></h1>
+    <p class="lede">Doutorando em <b>previsão e séries temporais</b>. Trabalho na ponte entre
+      o método acadêmico e a operação real: <b>transfer learning</b> para previsão solar,
+      previsão de criptoativos, otimização de portfólio e simulação.</p>
+    <ul class="chips">
+      <li>Transfer learning</li><li>Séries temporais</li><li>Machine learning</li>
+      <li>Otimização de portfólio</li><li>Energia renovável</li><li>Revisão sistemática PRISMA</li>
+    </ul>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Projetos</h2>
+    <div class="grid">
+
+      <article class="card">
+        <p class="tag live">● No ar &middot; código aberto</p>
+        <h3>ForeSight 3.0</h3>
+        <p>Previsão de criptoativos com validação científica. Sete estratégias testadas,
+          seis mortas, uma sobrevive — e ela foi replicada em dois ativos independentes.</p>
+        <p class="go"><a href="https://github.com/rodrigohuber/ForeSight-3.0" rel="noopener">github.com/rodrigohuber/ForeSight-3.0</a></p>
+      </article>
+
+      <article class="card">
+        <p class="tag">Artigo publicado</p>
+        <h3>Previsão solar zero-shot — SBPO 2025</h3>
+        <p>Previsão de geração fotovoltaica em usinas sem histórico local, com o código
+          completo publicado junto.</p>
+        <p class="go"><a href="https://github.com/rodrigohuber/zero-shot-solar-forecasting_SBPO25" rel="noopener">github.com/rodrigohuber/zero-shot-solar-forecasting_SBPO25</a></p>
+      </article>
+
+      <article class="card">
+        <p class="tag">Revisão sistemática</p>
+        <h3>Transfer learning para previsão solar</h3>
+        <p>Revisão PRISMA de 106 estudos, organizada em torno de uma pergunta que nenhuma
+          revisão anterior fez: <b>quanto dado local</b> esses métodos realmente precisam.</p>
+        <p class="go">Em andamento</p>
+      </article>
+
+      <article class="card">
+        <p class="tag">Doutorado</p>
+        <h3>Transfer learning e quantificação de incerteza para previsão fotovoltaica</h3>
+        <p>Linha de pesquisa em andamento na PUC-Rio.</p>
+        <p class="go">Em andamento</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Onde me encontrar</h2>
+    <div class="links">
+      <a class="link" href="https://github.com/rodrigohuber" rel="noopener">
+        <span class="ic">&#9679;</span><span class="tx"><b>GitHub</b><span>github.com/rodrigohuber</span></span></a>
+      <a class="link" href="https://www.instagram.com/rodrigohuber" rel="noopener">
+        <span class="ic">&#9673;</span><span class="tx"><b>Instagram</b><span>@rodrigohuber</span></span></a>
+      <a class="link" href="mailto:rodrigohubermendes@gmail.com">
+        <span class="ic">&#9993;</span><span class="tx"><b>E-mail</b><span>rodrigohubermendes@gmail.com</span></span></a>
+      <a class="link" href="https://wa.me/5521998097648" rel="noopener">
+        <span class="ic">&#9742;</span><span class="tx"><b>WhatsApp</b><span>+55 21 99809-7648</span></span></a>
+      <a class="link" href="http://lattes.cnpq.br/0033509075538480" rel="noopener">
+        <span class="ic">&#9635;</span><span class="tx"><b>Lattes</b><span>Currículo acadêmico</span></span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Rodrigo Huber Marques Moreira Mendes &middot; Rio de Janeiro, Brasil</p>
+    <p>Citação bibliográfica: MENDES, R. H. M. M.</p>
+  </div>
+</footer>
+
+<div id="egg" role="dialog" aria-modal="true" aria-label="Você achou">
+  <div class="eggbox">
+    <p>Você clicou cinco vezes num ponto final.<br>Isso merece uma recompensa.</p>
+    <a class="go" id="eggLink" href="#" rel="noopener">Abrir</a>
+    <button class="close" id="eggClose" type="button">fechar</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ==========================================================
+     EASTER EGG — 5 clicks on the full stop after the name.
+     Set MEME_URL to the meme page once it is live. While it is
+     empty the egg stays disabled, so the page never offers a
+     dead link.
+     ========================================================== */
+  var MEME_URL = "";
+
+  var dot = document.getElementById('dot'),
+      egg = document.getElementById('egg'),
+      link = document.getElementById('eggLink'),
+      closeBtn = document.getElementById('eggClose'),
+      hits = 0, timer = null;
+
+  if (!dot) return;
+
+  function reset(){ hits = 0; dot.classList.remove('warm'); }
+
+  dot.addEventListener('click', function(){
+    if (!MEME_URL) return;
+    hits++;
+    if (hits >= 3) dot.classList.add('warm');   /* it starts to glow — findable, not obvious */
+    clearTimeout(timer);
+    timer = setTimeout(reset, 1600);            /* the run must be deliberate */
+    if (hits >= 5){
+      clearTimeout(timer); reset();
+      link.href = MEME_URL;
+      egg.classList.add('on');
+    }
+  });
+
+  function hide(){ egg.classList.remove('on'); }
+  closeBtn.addEventListener('click', hide);
+  egg.addEventListener('click', function(e){ if (e.target === egg) hide(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') hide(); });
+})();
+</script>
+</body>
+</html>
