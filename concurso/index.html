@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concurso ForeSight 3.0 — 0,01 BTC no Blockchain Rio</title>
+<meta name="description" content="Qual é a pior previsão sobre cripto que você já viu — ou fez? A resposta que eu mais gostar leva 0,01 BTC. Blockchain Rio, 12 e 13 de agosto de 2026.">
+<meta name="color-scheme" content="dark light">
+<meta property="og:title" content="Concurso ForeSight 3.0 — 0,01 BTC">
+<meta property="og:description" content="Qual é a pior previsão sobre cripto que você já viu — ou fez? A que eu mais gostar leva 0,01 BTC.">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --deep:#040a12; --card:#0c1a2b; --card2:#0f2136; --line:#183049;
+    --foam:#eff5fc; --mist:#8ba4c0; --dim:#63799a;
+    --swell:#3d9be9; --volt:#5fd3c4; --sun:#ffb454;
+  }
+  *{box-sizing:border-box}
+  html,body{overflow-x:hidden}
+  body{margin:0;background:var(--deep);color:var(--foam);
+    font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:660px;margin:0 auto;padding:0 clamp(1.15rem,5vw,1.8rem)}
+  a{color:var(--swell)} a:hover{color:var(--volt)}
+
+  /* ---------- hero: a pergunta é a página ---------- */
+  header{position:relative;overflow:hidden;padding:clamp(2.6rem,9vw,4.2rem) 0 clamp(1.8rem,6vw,2.6rem);
+    text-align:center}
+  header::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(120% 85% at 50% -14%,rgba(255,180,84,.16),transparent 62%),
+               radial-gradient(95% 70% at 50% 0%,rgba(61,155,233,.16),transparent 60%)}
+  .kicker{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--volt);
+    font-weight:800;margin:0 0 1.1rem}
+  .q{font-size:clamp(1.55rem,6.2vw,2.9rem);line-height:1.13;font-weight:850;margin:0 0 1.1rem;
+    letter-spacing:-.02em;overflow-wrap:break-word;hyphens:auto}
+  .q em{font-style:normal;color:var(--sun)}
+  .sub{color:var(--mist);font-size:clamp(1rem,2.7vw,1.13rem);margin:0 auto 1.7rem;max-width:34ch}
+  .sub b{color:var(--foam)}
+
+  .prize{display:inline-flex;align-items:baseline;gap:.5rem;background:linear-gradient(160deg,var(--card2),var(--card));
+    border:1px solid var(--sun);border-radius:14px;padding:.85rem 1.5rem;margin-bottom:1.4rem}
+  .prize .n{font-size:clamp(1.6rem,5vw,2.1rem);font-weight:850;color:var(--sun);letter-spacing:-.02em}
+  .prize .u{font-size:.85rem;color:var(--mist)}
+
+  .cta{display:block;background:var(--sun);color:#20160a;font-weight:800;
+    padding:.95rem 1.2rem;border-radius:999px;font-size:clamp(.95rem,3.4vw,1.05rem);
+    text-decoration:none;text-align:center;box-shadow:0 8px 28px rgba(255,180,84,.22);
+    overflow-wrap:break-word}
+  .cta:hover{color:#20160a;filter:brightness(1.07)}
+  .cta.off{background:var(--card2);color:var(--mist);border:1px dashed var(--line);
+    box-shadow:none;cursor:default;font-weight:700}
+  .when{font-size:.83rem;color:var(--dim);margin:.7rem 0 0;text-align:center}
+
+  /* ---------- corpo ---------- */
+  section{padding:1.9rem 0;border-top:1px solid var(--line)}
+  h2{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--volt);
+    margin:0 0 1rem;font-weight:800}
+  .rules p{margin:0 0 .95rem;font-size:.96rem;color:var(--mist);overflow-wrap:break-word}
+  .rules p b{color:var(--foam)}
+  .rules p:last-child{margin-bottom:0}
+  .rules .lbl{color:var(--volt);font-weight:750}
+
+  .dates{display:grid;gap:.4rem}
+  .drow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5rem;padding:.6rem .8rem;
+    background:var(--card);border:1px solid var(--line);border-radius:9px;
+    font-size:.88rem;align-items:baseline}
+  .drow span{color:var(--mist);min-width:0;overflow-wrap:break-word}
+  .drow b{color:var(--foam);white-space:nowrap;font-weight:700}
+  .drow.hot{border-color:var(--sun)}
+  .drow.hot b{color:var(--sun)}
+
+  .warn{border-left:3px solid var(--sun);background:rgba(255,180,84,.07);
+    padding:.75rem .95rem;border-radius:0 8px 8px 0;font-size:.9rem;color:var(--mist)}
+  .warn b{color:var(--foam)}
+
+  footer{padding:1.9rem 0 3rem;border-top:1px solid var(--line);color:var(--dim);font-size:.82rem;
+    text-align:center}
+  footer p{margin:.35rem 0}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="kicker">ForeSight 3.0 &middot; Blockchain Rio 2026</p>
+    <h1 class="q">Qual é a <em>pior previsão</em> sobre cripto que você já viu &mdash; ou fez?</h1>
+    <p class="sub">Conta em uma ou duas frases. <b>A que eu mais gostar leva o prêmio.</b></p>
+    <div class="prize"><span class="n">0,01</span><span class="u">BTC</span></div>
+    <div id="ctaSlot"></div>
+    <p class="when">Respostas até <b>13/08/2026, 19h</b> &middot; resultado por e-mail até <b>22h</b> do mesmo dia</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>As regras &mdash; são estas, e são todas</h2>
+    <div class="rules">
+      <p><span class="lbl">Como participar.</span> Responda à pergunta no formulário até
+        <b>13/08/2026, às 19h</b>, durante o Blockchain Rio. Uma resposta por pessoa. É de graça e
+        não depende de comprar nada.</p>
+
+      <p><span class="lbl">Quem pode.</span> Maiores de 18 anos, residentes no Brasil. Não vale para
+        mim nem para a minha família.</p>
+
+      <p><span class="lbl">Como eu escolho.</span> Eu leio todas e escolho <b>a que eu mais
+        gostar</b>, com a ajuda de um grupo de estudantes universitários presentes no evento. É
+        critério pessoal e subjetivo &mdash; <b>não existe resposta "certa"</b>. A decisão é final,
+        não cabe recurso e eu não explico o motivo da escolha. Participando, você concorda com isso.</p>
+
+      <p><span class="lbl">Resultado.</span> Até <b>13/08/2026, às 22h</b>, comunicado por e-mail
+        para o endereço cadastrado na inscrição.</p>
+
+      <p><span class="lbl">O prêmio.</span> 0,01 BTC, enviados para a carteira que o vencedor
+        informar. Eu peço o endereço <b>só ao vencedor, depois do resultado</b> &mdash; e
+        <b>nunca</b> peço seed phrase, chave privada ou senha de exchange.
+        <b>Se alguém pedir isso em meu nome, é golpe.</b></p>
+
+      <p><span class="lbl">Seus dados.</span> Guardo nome e e-mail apenas para avisar o resultado.
+        Qualquer outra coisa, só se você marcar a caixinha autorizando. Quer ser apagado? Um e-mail
+        para <a href="mailto:rodrigohubermendes@gmail.com">rodrigohubermendes@gmail.com</a> e pronto.</p>
+
+      <p><span class="lbl">Aviso.</span> Isto é uma brincadeira de divulgação de um projeto de
+        pesquisa. <b>Não é recomendação de investimento.</b></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Datas</h2>
+    <div class="dates">
+      <div class="drow"><span>Abertura das respostas</span><b>12/08, 10h</b></div>
+      <div class="drow hot"><span>Encerramento</span><b>13/08, 19h</b></div>
+      <div class="drow"><span>Leitura e julgamento</span><b>13/08, 19h–22h</b></div>
+      <div class="drow hot"><span>Resultado por e-mail</span><b>13/08, até 22h</b></div>
+    </div>
+    <p class="warn" style="margin-top:.9rem"><b>Blockchain Rio 2026</b> &mdash; 12 e 13 de agosto,
+      ExpoMag, Cidade Nova, Rio de Janeiro.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>De onde vem esse concurso</h2>
+    <div class="rules">
+      <p>O <b>ForeSight 3.0</b> é um projeto de previsão de criptoativos com validação científica.
+        Foram testadas <b>sete estratégias</b> contra custos reais: <b>seis morreram</b> e uma
+        sobreviveu &mdash; e essa foi replicada em dois ativos independentes.</p>
+      <p>Ou seja: a pergunta deste concurso é literalmente o assunto do projeto.
+        <b>Prever é difícil, e o quanto se erra é mensurável.</b> Quem publica só o acerto está
+        escondendo a parte que interessa.</p>
+      <p><a href="https://github.com/rodrigohuber/ForeSight-3.0" rel="noopener">Ver o projeto no GitHub &rarr;</a>
+        &nbsp;·&nbsp;
+        <a href="https://rodrigohuber.github.io/">rodrigohuber.github.io</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Rodrigo Huber Mendes &middot; Rio de Janeiro</p>
+    <p><a href="https://rodrigohuber.github.io/">rodrigohuber.github.io</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* ==========================================================
+     O link do formulário mora AQUI, não no QR code impresso.
+     Assim o Form pode ser criado (ou trocado) depois, sem
+     reimprimir nada. Enquanto FORM_URL estiver vazio, o botão
+     aparece desativado em vez de virar link morto.
+     ========================================================== */
+  var FORM_URL = "";
+
+  var slot = document.getElementById('ctaSlot');
+  if (FORM_URL) {
+    var a = document.createElement('a');
+    a.className = 'cta';
+    a.href = FORM_URL;
+    a.rel = 'noopener';
+    a.textContent = 'Responder e concorrer';
+    slot.appendChild(a);
+  } else {
+    var d = document.createElement('div');
+    d.className = 'cta off';
+    d.textContent = 'O formulário abre em 12/08, às 10h';
+    slot.appendChild(d);
+  }
+})();
+</script>
+</body>
+</html>
