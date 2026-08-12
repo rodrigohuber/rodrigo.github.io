@@ -91,6 +91,21 @@
   .brow .fill.hot{background:var(--alert)} .brow .fill.ok{background:var(--good)}
   .brow .vl{flex:0 0 3.2em;font-weight:700;color:var(--ink)}
 
+  /* ---- fecho: três pilares ---- */
+  .pilares{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5em;margin:.35em 0 .45em}
+  .pil{background:var(--block);border-top:5px solid var(--bg);border-radius:0 0 8px 8px;
+    padding:.5em .6em .55em;text-align:center}
+  .pil.p2{border-top-color:var(--r)} .pil.p3{border-top-color:var(--mo)}
+  .pil .k{font-size:.52em;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:800}
+  .pil .n{font-size:1.5em;font-weight:850;color:var(--bg);line-height:1.05;margin:.12em 0 .1em;display:block}
+  .pil.p2 .n{color:var(--r)} .pil.p3 .n{color:var(--mo)}
+  .pil .d{font-size:.62em;color:var(--ink);line-height:1.25}
+  .frase{text-align:center;font-size:.82em;font-style:italic;color:var(--muted);
+    line-height:1.3;margin:.1em auto .3em;max-width:52em}
+  .frase b{color:var(--ink);font-style:normal}
+  .assina{text-align:center;font-size:.62em;color:var(--muted);margin-top:.1em}
+  .assina a{color:var(--bg);font-weight:700;text-decoration:none}
+
   .footline{flex:0 0 auto;display:flex;height:1.3em;font-size:.46em;color:#fff}
   .footline div{display:flex;align-items:center;padding:0 .8em;white-space:nowrap;overflow:hidden}
   .fl1{background:#12245c;flex:0 0 26%}.fl2{background:var(--bg);flex:1 1 auto}.fl3{background:var(--bg3);flex:0 0 15%;justify-content:flex-end}
@@ -357,33 +372,36 @@
 <section class="slide">
   <div class="headline"><span>Fecho</span><span class="deck">ForeSight 3.0</span></div>
   <div class="body">
-    <div class="ftitle">Ciência de dados testada, não hype</div>
+    <div class="ftitle" style="text-align:center;font-size:1.32em">Prever &middot; Decidir &middot; Executar</div>
     <hr class="rule">
 
-    <div style="border-left:8px solid var(--bg);background:var(--block);padding:.5em .85em;
-                border-radius:0 8px 8px 0;margin:.15em 0 .4em">
-      <p style="font-size:1.02em;line-height:1.32;margin:0;font-style:italic">
-        &ldquo;O mercado pune a falta de preparo intelectual e o emocional instável, penalizando
-        escolhas impulsivas e <b>transferindo capital dos impacientes e desinformados para quem tem
-        racionalidade e visão de longo prazo</b>.&rdquo;</p>
+    <div class="pilares">
+      <div class="pil">
+        <span class="k">Previsão</span>
+        <span class="n">7 → 1</span>
+        <div class="d">Sete estratégias testadas, <b>seis mortas</b>. A que sobrou, replicada em dois ativos.</div>
+      </div>
+      <div class="pil p2">
+        <span class="k">Portfólio</span>
+        <span class="n">2N²−2N+2</span>
+        <div class="d">Métrica de risco publicada e revisada por pares. <b>Evolução de Markowitz.</b></div>
+      </div>
+      <div class="pil p3">
+        <span class="k">Execução</span>
+        <span class="n">on-chain</span>
+        <div class="d">Commodities liquidadas em cripto. <b>Brasil, Leste Europeu, Eurásia.</b></div>
+      </div>
     </div>
 
-    <div class="block goodblock" style="margin:.2em 0"><div class="bt">É desse lado da transferência que a gente joga</div><div class="bb">
-      Estamos aptos a <b>testar qualquer modelagem de previsão de forma cientificamente correta</b>
-      &mdash; fora da amostra, com custos, contra linhas de base, e reprovando o que não passa
-      &mdash; e a <b>avaliar e implementar seu uso on-chain</b>.</div></div>
+    <p class="frase">&ldquo;O mercado transfere capital dos impacientes e desinformados
+      <b>para quem tem racionalidade e visão de longo prazo</b>.&rdquo;</p>
 
-    <div class="cols">
-      <div class="block"><div class="bt">A prova</div><div class="bb">
-        Sete estratégias testadas, <b>seis mortas</b>, uma replicada em dois ativos independentes.</div></div>
-      <div class="block"><div class="bt">A ponte</div><div class="bb">
-        Doutorado em previsão e séries temporais &rarr; operação real de portfólio.</div></div>
-    </div>
+    <div class="block goodblock" style="margin:0"><div class="bb" style="text-align:center;font-size:.95em">
+      É desse lado da transferência que a gente joga.</div></div>
 
-    <div class="gloss" style="font-size:.7em;margin-top:.25em"><span class="lbl">CONTATO</span>
-      <a href="https://rodrigohuber.github.io/">rodrigohuber.github.io</a> &middot;
-      <a href="https://github.com/rodrigohuber/ForeSight-3.0">github.com/rodrigohuber/ForeSight-3.0</a>
-      &middot; rodrigohubermendes@gmail.com</div>
+    <p class="assina"><a href="https://rodrigohuber.github.io/">rodrigohuber.github.io</a>
+      &nbsp;&middot;&nbsp; github.com/rodrigohuber/ForeSight-3.0
+      &nbsp;&middot;&nbsp; rodrigohubermendes@gmail.com</p>
   </div>
   <div class="footline"><div class="fl1">Rodrigo</div><div class="fl2">ForeSight 3.0 &mdash; Palco Sebrae</div><div class="fl3"></div></div>
 </section>
