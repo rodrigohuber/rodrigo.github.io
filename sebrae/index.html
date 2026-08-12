@@ -67,6 +67,13 @@
   .qtag{font-size:.64em;border:1px solid #cbe0cb;background:#eef8ef;border-radius:.7em;padding:.04em .5em;font-weight:600;color:#1b5e2a}
   .qtag.hot{border-color:#e6b8bf;background:#fbeef0;color:#8a1020}
 
+  /* destaque em contorno retangular */
+  .outline{display:inline-block;border:2.5px solid var(--alert);border-radius:.28em;
+    padding:0 .22em;line-height:1.25}
+  /* gloss ampliada: o dobro do corpo e fonte maior */
+  .gloss.big{font-size:1.02em;padding:.5em .8em;border-left-width:7px;line-height:1.3;margin-top:.4em}
+  .gloss.big .lbl{font-size:.78em;display:block;margin-bottom:.12em}
+
   .seed{border-left:4px solid var(--mo);background:#fff8ec;padding:.18em .55em;font-size:.78em;margin-top:.24em;line-height:1.24}
 
   .steps{counter-reset:s;margin:.2em 0}
@@ -150,21 +157,23 @@
 
 <!-- 3 PROBLEMA -->
 <section class="slide">
-  <div class="headline"><span>I &middot; O problema</span><span class="deck">ForeSight 3.0</span></div>
+  <div class="headline"><span>II &middot; O problema</span><span class="deck">ForeSight 3.0</span></div>
   <div class="body">
-    <div class="ftitle">Em cripto, todo mundo mostra o backtest que deu certo
-      <span class="sub">e ninguém mostra os que morreram &mdash; que são a maioria</span></div>
+    <div class="ftitle">&ldquo;Me diga as motivações que te digo os resultados&rdquo;
+      <span class="sub">Renato Amoedo, parafraseado &nbsp;&middot;&nbsp; em cripto, todo mundo mostra o
+      backtest que deu certo &mdash; e ninguém mostra os que morreram, que são a maioria</span></div>
     <hr class="rule">
     <ul>
       <li><b>O incentivo é publicar o acerto.</b> Um backtest com viés de lookahead infla o resultado
         histórico e nunca é auditado por quem compra o sinal.</li>
-      <li><b>Protocolos DeFi, DAOs e tesourarias decidem com isso.</b> Alocação, parâmetros de risco,
+      <li><b>Protocolos DeFi, DAOs e tesourarias <span class="outline">decidem com isso</span>.</b> Alocação, parâmetros de risco,
         rebalanceamento &mdash; tudo apoiado em número que ninguém consegue reproduzir.</li>
       <li><b>Não existe rastro.</b> Quando o sinal erra, não há registro do que foi prometido, quando,
         e com que método.</li>
     </ul>
-    <div class="gloss"><span class="lbl">A APOSTA</span>Quem conseguir provar que o método é honesto &mdash;
-      inclusive mostrando o que falhou &mdash; vira infraestrutura de decisão, não mais um vendedor de sinal.</div>
+    <div class="gloss big"><span class="lbl">A APOSTA QUE FOI VALIDADA</span>Quem conseguir provar que o
+      método é honesto &mdash; inclusive mostrando o que falhou &mdash; vira <b>infraestrutura de
+      decisão</b>, não mais um vendedor de sinal.</div>
   </div>
   <div class="footline"><div class="fl1">Rodrigo</div><div class="fl2">ForeSight 3.0 &mdash; Palco Sebrae</div><div class="fl3"></div></div>
 </section>
