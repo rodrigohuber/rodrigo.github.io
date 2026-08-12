@@ -52,9 +52,11 @@
   .when{font-size:.83rem;color:var(--dim);margin:.7rem 0 0;text-align:center}
   .ast{color:var(--sun);font-weight:700}
   .prize .ast{font-size:.5em;vertical-align:super;margin-left:.06em}
-  .fn{font-size:.51rem;color:#7d93ad;margin:.45rem auto 0;max-width:56ch;text-align:center;
-    line-height:1.5;overflow-wrap:break-word;letter-spacing:.005em}
-  .fn b{color:var(--mist);font-weight:650}
+  .fn{font-size:.62rem;color:#7d93ad;margin:0 auto 1.1rem;max-width:60ch;text-align:center;
+    line-height:1.55;overflow-wrap:break-word;padding-bottom:.9rem;
+    border-bottom:1px solid var(--line)}
+  .prize .ast a{color:var(--sun);text-decoration:none}
+  .prize .ast a:hover{color:var(--foam)}
 
   /* ---------- corpo ---------- */
   section{padding:1.9rem 0;border-top:1px solid var(--line)}
@@ -91,12 +93,9 @@
     <p class="kicker">ForeSight 3.0 &middot; Blockchain Rio 2026</p>
     <h1 class="q">Qual é a <em>pior previsão</em> sobre cripto que você já viu &mdash; ou fez?</h1>
     <p class="sub">Conta em uma ou duas frases. <b>A que eu mais gostar leva o prêmio.</b></p>
-    <div class="prize"><span class="n">até 0,01</span><span class="u">BTC<sup class="ast">*</sup></span></div>
+    <div class="prize"><span class="n">até 0,01</span><span class="u">BTC<sup class="ast"><a href="#nota-premio">*</a></sup></span></div>
     <div id="ctaSlot"></div>
     <p class="when">Respostas até <b>13/08/2026, 19h</b> &middot; resultado por e-mail até <b>22h</b> do mesmo dia</p>
-    <p class="fn"><span class="ast">*</span> O prêmio é entregue em serviços &mdash; aulas de
-      criptoativos, intermediação, ou outros dentro das minhas especialidades &mdash; no valor de
-      até 0,01 BTC.</p>
   </div>
 </header>
 
@@ -172,6 +171,8 @@
 
 <footer>
   <div class="wrap">
+    <p class="fn" id="nota-premio">* O prêmio é entregue em serviços &mdash; aulas de criptoativos,
+      intermediação, ou outros dentro das minhas especialidades &mdash; no valor de até 0,01 BTC.</p>
     <p>Rodrigo Huber Mendes &middot; Rio de Janeiro</p>
     <p><a href="https://rodrigohuber.github.io/">rodrigohuber.github.io</a></p>
   </div>
