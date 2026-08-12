@@ -140,9 +140,8 @@
 
     <div class="block" style="font-size:.92em"><div class="bt">2 &middot; Otimização e simulação de portfólios</div><div class="bb">
       A <b>carteira ótima</b>, com criptoativo como <i>hedge</i> ou não, sobre uma métrica de risco
-      própria, já <b>publicada em periódico revisado por pares</b>. Onde Markowitz mede as relações
-      entre ativos pela covariância, a nossa detalha muito mais &mdash; e distingue <b>quando os
-      ativos caem juntos de quando um cai e o outro sobe</b>.</div></div>
+      própria, já <b>publicada em periódico revisado por pares</b> &mdash; uma <b>evolução do modelo
+      clássico de Markowitz</b>.</div></div>
 
     <div class="block" style="font-size:.92em"><div class="bt">3 &middot; Intermediação de commodities em criptoativos</div><div class="bb">
       Linha <b>em estruturação</b>: mediação de compra e venda de commodities liquidadas em cripto,
@@ -189,7 +188,7 @@
       Base própria construída do zero: <b>9,4 milhões de barras de 1 minuto</b> de BTC e ETH,
       2017&ndash;2026, cada arquivo de origem <b>verificado por SHA-256</b>. Sete estratégias
       implementadas e testadas <b>fora da amostra</b>, com custos cobrados, divisão cronológica e
-      correção para testes múltiplos. <b>27 módulos Python</b>, todo número gerado por script.</div>
+      correção para testes múltiplos. <b>27 módulos Python</b>.</div>
     <table class="t dense">
       <tr><th>Testado</th><th>Veredicto</th><th>Evidência</th></tr>
       <tr><td>Direção no minuto, a partir do preço</td><td class="alert">MORTO</td><td>R&sup2; &minus;1,02 vs prever zero; acerto 49,4%</td></tr>
@@ -210,7 +209,10 @@
   <div class="headline"><span>II &middot; Tração</span><span class="deck">ForeSight 3.0</span></div>
   <div class="body">
     <div class="ftitle">O que sobrou funciona nos dois ativos
-      <span class="sub">Sharpe, barras diárias, custo de 10 bps &mdash; grade completa, não a melhor célula</span></div>
+      <span class="sub">A regra: <b>comprado quando o retorno passado é positivo, com tamanho inverso
+      à volatilidade recente; fora do mercado caso contrário.</b> Testada em toda a grade de janelas
+      e em todos os níveis de custo até 20 bps, nos dois ativos &mdash; grade completa, não a melhor
+      célula</span></div>
     <hr class="rule">
     <div class="cols">
       <div>
@@ -240,41 +242,13 @@
   <div class="footline"><div class="fl1">Rodrigo</div><div class="fl2">ForeSight 3.0 &mdash; Palco Sebrae</div><div class="fl3"></div></div>
 </section>
 
-<!-- 5 O ACHADO CARO -->
-<section class="slide">
-  <div class="headline"><span>III &middot; O achado que ninguém vende</span><span class="deck">ForeSight 3.0</span></div>
-  <div class="body">
-    <div class="ftitle">Uma previsão melhor é um dimensionador de posição pior
-      <span class="sub">o resultado que mais custou para aprender &mdash; e o que mais vale para um cliente</span></div>
-    <hr class="rule">
-    <div class="cols">
-      <div>
-        <table class="t">
-          <tr><th>Sizing</th><th>Sharpe</th><th>Giro/ano</th></tr>
-          <tr><td>vol. realizada simples, 20 dias</td><td class="good"><b>0,61</b></td><td>7&times;</td></tr>
-          <tr><td>nossa previsão LightGBM</td><td class="alert">0,50</td><td>48&times;</td></tr>
-        </table>
-        <p style="font-size:.78em">O modelo LightGBM bate o HAR em <span class="stat">30%</span> de acurácia
-          &mdash; e mesmo assim perde como dimensionador, com <b>7&times; mais giro</b> (logo, mais custo).</p>
-      </div>
-      <div>
-        <div class="block warnblock"><div class="bt">Previsão e posição são objetivos diferentes</div><div class="bb">
-          Previsão premia <b>responsividade</b>. Dimensionamento premia <b>estabilidade</b>.
-          Nenhuma acurácia adicional conserta isso.</div></div>
-        <div class="seed">É exatamente aqui que a ponte academia&nbsp;&rarr;&nbsp;operação se paga: o time que só
-          otimiza métrica de previsão gasta meses no objetivo errado. Nós já pagamos essa conta &mdash; e medimos.</div>
-      </div>
-    </div>
-  </div>
-  <div class="footline"><div class="fl1">Rodrigo</div><div class="fl2">ForeSight 3.0 &mdash; Palco Sebrae</div><div class="fl3"></div></div>
-</section>
-
 <!-- 6 EFICIENCIA DE MERCADO / FUNDING -->
 <section class="slide">
   <div class="headline"><span>III &middot; O achado que ninguém vende</span><span class="deck">ForeSight 3.0</span></div>
   <div class="body">
-    <div class="ftitle">O carry de funding existiu &mdash; e foi arbitrado
-      <span class="sub">taxa anualizada de funding, Binance, 7.212 liquidações</span></div>
+    <div class="ftitle">Sabemos reconhecer quando uma oportunidade morre
+      <span class="sub">e dizer isso &mdash; o carry de funding existiu de verdade e foi arbitrado
+      &nbsp;&middot;&nbsp; taxa anualizada, Binance, 7.212 liquidações</span></div>
     <hr class="rule">
     <div class="barlist">
       <div class="brow"><span class="lb">2020</span><span class="track"><span class="fill" style="width:56%"></span></span><span class="vl">17,2%</span></div>
@@ -285,13 +259,16 @@
       <div class="brow"><span class="lb">2025</span><span class="track"><span class="fill" style="width:17%"></span></span><span class="vl">5,1%</span></div>
       <div class="brow"><span class="lb">2026*</span><span class="track"><span class="fill hot" style="width:6%"></span></span><span class="vl">1,9%</span></div>
     </div>
+    <div class="gloss" style="margin:.1em 0 .3em"><span class="lbl">POR QUE ISTO IMPORTA</span>
+      Boa parte do setor ainda vende esta estratégia. <b>Nós medimos que ela morreu, e dissemos.</b>
+      É a diferença entre vender sinal e ser infraestrutura de decisão.</div>
     <div class="cols">
       <div class="block alertblock"><div class="bt">Últimos 12 meses: 3,4%</div><div class="bb">
         Um título público paga o equivalente, sem risco de contraparte de exchange, sem capital de
         margem, sem risco de liquidação.</div></div>
       <div class="block"><div class="bt">E o Sharpe 17?</div><div class="bb">
-        O carry ingênuo dá Sharpe <b>17</b> &mdash; número que deve ser <b>desacreditado à primeira vista</b>.
-        Com 5% de erro de hedge: 2,35. Com 10%: 1,18.</div></div>
+        A conta ingênua dá Sharpe <b>17</b>. Em vez de vender isso, <b>desacreditamos o próprio
+        número</b>: com 5% de erro de hedge cai para 2,35; com 10%, para 1,18.</div></div>
     </div>
   </div>
   <div class="footline"><div class="fl1">Rodrigo</div><div class="fl2">ForeSight 3.0 &mdash; Palco Sebrae</div><div class="fl3"></div></div>
@@ -301,7 +278,7 @@
 <section class="slide">
   <div class="headline"><span>IV &middot; O diferencial</span><span class="deck">ForeSight 3.0</span></div>
   <div class="body">
-    <div class="ftitle">O produto não é o sinal. É o processo que reprova sinais.
+    <div class="ftitle">O produto não é o sinal. É o processo científico que reprova e aprova sinais.
       <span class="sub">disciplina de método aplicada em todos os sete testes acima</span></div>
     <hr class="rule">
     <div class="steps">
