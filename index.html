@@ -430,25 +430,43 @@
   var bar = document.getElementById('evbar');
   var alvo = document.getElementById('antes-de-ir-embora');
   if (bar && alvo) {
+    var raiz = document.scrollingElement || document.documentElement;
     var animando = false, raf = null;
 
-    function cancelar(){ if (animando) { animando = false; if (raf) cancelAnimationFrame(raf); } }
-    ['wheel','touchstart','keydown','mousedown'].forEach(function(ev){
-      window.addEventListener(ev, cancelar, {passive:true});
+    function irPara(y){
+      /* ⚠️ O CSS tem scroll-behavior:smooth. Sem o behavior:'instant' EXPLÍCITO,
+         cada chamada aqui vira uma rolagem suave própria e elas se atropelam
+         60x por segundo — foi isso que travou a versão anterior. */
+      try { window.scrollTo({top: y, behavior: 'instant'}); }
+      catch (err) { raiz.scrollTop = y; }
+    }
+    function parar(){
+      animando = false;
+      if (raf) { cancelAnimationFrame(raf); raf = null; }
+      raiz.style.scrollBehavior = '';
+    }
+    ['wheel','touchstart','keydown'].forEach(function(ev){
+      window.addEventListener(ev, function(){ if (animando) parar(); }, {passive:true});
     });
 
     bar.addEventListener('click', function(e){
       e.preventDefault();
-      var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var ini = window.pageYOffset;
-      var fim = alvo.getBoundingClientRect().top + ini - 12;
-      var dist = fim - ini;
+      parar();
 
-      if (reduz || Math.abs(dist) < 40) { window.scrollTo(0, fim); return; }
+      var y0 = window.pageYOffset || raiz.scrollTop || 0;
+      var destino = alvo.getBoundingClientRect().top + y0 - 12;
+      var maxY = Math.max(0, document.body.scrollHeight - window.innerHeight);
+      destino = Math.max(0, Math.min(destino, maxY));
+      var dist = destino - y0;
 
-      /* ~1,1 s por tela de rolagem, entre 2,5 s e 7 s */
-      var dur = Math.min(7000, Math.max(2500,
-                 Math.abs(dist) / window.innerHeight * 1100));
+      var reduz = window.matchMedia &&
+                  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduz || Math.abs(dist) < 40) { irPara(destino); return; }
+
+      raiz.style.scrollBehavior = 'auto';
+      /* ~0,5 s por tela; entre 1,2 s e 2,6 s */
+      var dur = Math.min(2600, Math.max(1200,
+                 Math.abs(dist) / Math.max(1, window.innerHeight) * 500));
       var t0 = null;
       animando = true;
 
@@ -456,12 +474,16 @@
         if (!animando) return;
         if (t0 === null) t0 = ts;
         var k = Math.min(1, (ts - t0) / dur);
-        /* ease-in-out: começa devagar, embala no meio, freia no fim */
         var e2 = k < 0.5 ? 2*k*k : 1 - Math.pow(-2*k + 2, 2) / 2;
-        window.scrollTo(0, ini + dist * e2);
-        if (k < 1) { raf = requestAnimationFrame(passo); } else { animando = false; }
+        irPara(y0 + dist * e2);
+        if (k < 1) { raf = requestAnimationFrame(passo); }
+        else { parar(); irPara(destino); }
       }
       raf = requestAnimationFrame(passo);
+
+      /* rede de segurança: se o rAF não rodar (aba em segundo plano, motor
+         travado), o destino é alcançado de qualquer jeito. */
+      setTimeout(function(){ if (animando) { parar(); irPara(destino); } }, dur + 600);
     });
   }
 })();
