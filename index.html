@@ -156,7 +156,7 @@
 <body>
 
 <!-- ⏳ FAIXA TEMPORÁRIA DO EVENTO — REMOVER DEPOIS DE 13/08/2026 -->
-<a class="evbar" href="concurso/">🏆 <b>Blockchain Rio, 12 e 13/08:</b> conte a pior previsão sobre cripto que você já viu &mdash; e leve até 0,01 BTC em serviços &rarr;</a>
+<a class="evbar" href="#antes-de-ir-embora" id="evbar">🏆 <b>Blockchain Rio, 12 e 13/08:</b> conte a pior previsão sobre cripto que você já viu &mdash; e leve até 0,01 BTC em serviços &rarr;</a>
 
 <header class="hero">
   <div class="wrap">
@@ -367,7 +367,7 @@
   </div>
 </section>
 
-<section>
+<section id="antes-de-ir-embora">
   <div class="wrap">
     <h2>Antes de ir embora</h2>
     <div class="concurso">
@@ -414,6 +414,58 @@
     <button class="close" id="eggClose" type="button">fechar</button>
   </div>
 </div>
+
+<script>
+(function(){
+  /* ==========================================================
+     PASSEIO ATÉ O CONCURSO — a faixa do topo não pula para a
+     página do concurso: desce a página inteira devagar, para a
+     pessoa ver o conteúdo no caminho.
+
+     Regras que fazem isso não virar sequestro de rolagem:
+       - qualquer toque, scroll ou tecla CANCELA na hora;
+       - prefers-reduced-motion pula direto para o destino;
+       - a duração é proporcional à distância, com teto.
+     ========================================================== */
+  var bar = document.getElementById('evbar');
+  var alvo = document.getElementById('antes-de-ir-embora');
+  if (bar && alvo) {
+    var animando = false, raf = null;
+
+    function cancelar(){ if (animando) { animando = false; if (raf) cancelAnimationFrame(raf); } }
+    ['wheel','touchstart','keydown','mousedown'].forEach(function(ev){
+      window.addEventListener(ev, cancelar, {passive:true});
+    });
+
+    bar.addEventListener('click', function(e){
+      e.preventDefault();
+      var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var ini = window.pageYOffset;
+      var fim = alvo.getBoundingClientRect().top + ini - 12;
+      var dist = fim - ini;
+
+      if (reduz || Math.abs(dist) < 40) { window.scrollTo(0, fim); return; }
+
+      /* ~1,1 s por tela de rolagem, entre 2,5 s e 7 s */
+      var dur = Math.min(7000, Math.max(2500,
+                 Math.abs(dist) / window.innerHeight * 1100));
+      var t0 = null;
+      animando = true;
+
+      function passo(ts){
+        if (!animando) return;
+        if (t0 === null) t0 = ts;
+        var k = Math.min(1, (ts - t0) / dur);
+        /* ease-in-out: começa devagar, embala no meio, freia no fim */
+        var e2 = k < 0.5 ? 2*k*k : 1 - Math.pow(-2*k + 2, 2) / 2;
+        window.scrollTo(0, ini + dist * e2);
+        if (k < 1) { raf = requestAnimationFrame(passo); } else { animando = false; }
+      }
+      raf = requestAnimationFrame(passo);
+    });
+  }
+})();
+</script>
 
 <script>
 (function(){
