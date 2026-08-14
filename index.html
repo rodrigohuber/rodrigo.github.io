@@ -104,31 +104,12 @@
   .cred b{display:block;font-size:.94rem;font-weight:650;margin-bottom:.15rem}
   .cred span{font-size:.8rem;color:var(--dim)}
 
-  /* ---------- faixa do evento (TEMPORÁRIA — remover depois de 13/08/2026) ---------- */
-  .evbar{display:block;background:linear-gradient(90deg,var(--sun),#ff9a3c);color:#20160a;
-    text-decoration:none;font-weight:750;font-size:.9rem;text-align:center;padding:.62rem 1rem;
-    line-height:1.35}
-  .evbar:hover{color:#20160a;filter:brightness(1.06)}
-  .evbar b{font-weight:850}
-
-  /* segunda faixa, logo abaixo da dourada: leva ao pitch deck */
+  /* faixa do topo: leva ao pitch deck */
   .deckbar{display:block;background:linear-gradient(90deg,var(--swell),#5ab4f2);color:#06121f;
     text-decoration:none;font-weight:750;font-size:.9rem;text-align:center;padding:.62rem 1rem;
     line-height:1.35}
   .deckbar:hover{color:#06121f;filter:brightness(1.06)}
   .deckbar b{font-weight:850}
-
-  /* ---------- chamada do concurso, antes dos contatos ---------- */
-  .concurso{background:linear-gradient(150deg,#17243a,var(--card));border:1px solid var(--sun);
-    border-radius:14px;padding:1.4rem 1.5rem;display:flex;flex-wrap:wrap;gap:1rem;
-    align-items:center;justify-content:space-between}
-  .concurso .tx{flex:1 1 20rem;min-width:0}
-  .concurso .tag{color:var(--sun);margin-bottom:.35rem}
-  .concurso h3{margin:0 0 .4rem;font-size:1.15rem;font-weight:750;line-height:1.25}
-  .concurso p{margin:0;font-size:.9rem;color:var(--mist)}
-  .concurso .go{flex:0 0 auto;background:var(--sun);color:#20160a;font-weight:800;
-    padding:.7rem 1.3rem;border-radius:999px;font-size:.94rem;white-space:nowrap}
-  .concurso .go:hover{color:#20160a;filter:brightness(1.07)}
 
   /* ---------- links ---------- */
   .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:.6rem}
@@ -162,8 +143,6 @@
 </head>
 <body>
 
-<!-- ⏳ FAIXA TEMPORÁRIA DO EVENTO — REMOVER DEPOIS DE 13/08/2026 -->
-<a class="evbar" href="#antes-de-ir-embora" id="evbar">🏆 <b>Blockchain Rio, 12 e 13/08:</b> conte a pior previsão sobre cripto que você já viu &mdash; e leve até 0,01 BTC em serviços &rarr;</a>
 <a class="deckbar" href="sebrae/" id="deckbar">🎤 <b>Momento Pitch &middot; Palco Sebrae:</b> Ver o pitch deck apresentado &rarr;</a>
 
 <header class="hero">
@@ -375,21 +354,6 @@
   </div>
 </section>
 
-<section id="antes-de-ir-embora">
-  <div class="wrap">
-    <h2>Antes de ir embora</h2>
-    <div class="concurso">
-      <div class="tx">
-        <p class="tag">Concurso &middot; Blockchain Rio, 12 e 13 de agosto</p>
-        <h3>Qual é a pior previsão sobre cripto que você já viu &mdash; ou fez?</h3>
-        <p>Uma ou duas frases. A que eu mais gostar leva <b>até 0,01 BTC em serviços</b> &mdash;
-          aulas de criptoativos, intermediação, ou o que combinarmos. Respostas até 13/08, 19h.</p>
-      </div>
-      <a class="go" href="concurso/">Participar &rarr;</a>
-    </div>
-  </div>
-</section>
-
 <section>
   <div class="wrap">
     <h2>Onde me encontrar</h2>
@@ -422,80 +386,6 @@
     <button class="close" id="eggClose" type="button">fechar</button>
   </div>
 </div>
-
-<script>
-(function(){
-  /* ==========================================================
-     PASSEIO ATÉ O CONCURSO — a faixa do topo não pula para a
-     página do concurso: desce a página inteira devagar, para a
-     pessoa ver o conteúdo no caminho.
-
-     Regras que fazem isso não virar sequestro de rolagem:
-       - qualquer toque, scroll ou tecla CANCELA na hora;
-       - prefers-reduced-motion pula direto para o destino;
-       - a duração é proporcional à distância, com teto.
-     ========================================================== */
-  var bar = document.getElementById('evbar');
-  var alvo = document.getElementById('antes-de-ir-embora');
-  if (bar && alvo) {
-    var raiz = document.scrollingElement || document.documentElement;
-    var animando = false, raf = null;
-
-    function irPara(y){
-      /* ⚠️ O CSS tem scroll-behavior:smooth. Sem o behavior:'instant' EXPLÍCITO,
-         cada chamada aqui vira uma rolagem suave própria e elas se atropelam
-         60x por segundo — foi isso que travou a versão anterior. */
-      try { window.scrollTo({top: y, behavior: 'instant'}); }
-      catch (err) { raiz.scrollTop = y; }
-    }
-    function parar(){
-      animando = false;
-      if (raf) { cancelAnimationFrame(raf); raf = null; }
-      raiz.style.scrollBehavior = '';
-    }
-    ['wheel','touchstart','keydown'].forEach(function(ev){
-      window.addEventListener(ev, function(){ if (animando) parar(); }, {passive:true});
-    });
-
-    bar.addEventListener('click', function(e){
-      e.preventDefault();
-      parar();
-
-      var y0 = window.pageYOffset || raiz.scrollTop || 0;
-      var destino = alvo.getBoundingClientRect().top + y0 - 12;
-      var maxY = Math.max(0, document.body.scrollHeight - window.innerHeight);
-      destino = Math.max(0, Math.min(destino, maxY));
-      var dist = destino - y0;
-
-      var reduz = window.matchMedia &&
-                  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduz || Math.abs(dist) < 40) { irPara(destino); return; }
-
-      raiz.style.scrollBehavior = 'auto';
-      /* ~0,5 s por tela; entre 1,2 s e 2,6 s */
-      var dur = Math.min(2600, Math.max(1200,
-                 Math.abs(dist) / Math.max(1, window.innerHeight) * 500));
-      var t0 = null;
-      animando = true;
-
-      function passo(ts){
-        if (!animando) return;
-        if (t0 === null) t0 = ts;
-        var k = Math.min(1, (ts - t0) / dur);
-        var e2 = k < 0.5 ? 2*k*k : 1 - Math.pow(-2*k + 2, 2) / 2;
-        irPara(y0 + dist * e2);
-        if (k < 1) { raf = requestAnimationFrame(passo); }
-        else { parar(); irPara(destino); }
-      }
-      raf = requestAnimationFrame(passo);
-
-      /* rede de segurança: se o rAF não rodar (aba em segundo plano, motor
-         travado), o destino é alcançado de qualquer jeito. */
-      setTimeout(function(){ if (animando) { parar(); irPara(destino); } }, dur + 600);
-    });
-  }
-})();
-</script>
 
 <script>
 (function(){
